@@ -1,6 +1,6 @@
 # pyscal
 
-A pyscal tutorial
+A pyscal tutorial book
 
 ## Usage
 
