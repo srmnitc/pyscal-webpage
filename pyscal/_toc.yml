@@ -1,7 +1,10 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+  numbered: true
+
+- part: This is the first part
+  chapters:
+  - file: part1/01_sec1
+  - file: part1/02_sec2
+  - file: part1/03_sec3
