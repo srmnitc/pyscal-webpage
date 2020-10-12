@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to your Jupyter Book &#8212; pyscal</title>
+    <title>pyscal - python Structural Environment Calculator &#8212; pyscal</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -53,6 +53,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pyscal.org/intro.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Getting started with pyscal" href="part1/01_getting_started.html" />
@@ -60,6 +61,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://pyscal.org/intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="pyscal - python Structural Environment Calculator" />
+<meta property="og:description" content="pyscal - python Structural Environment Calculator  complete documentation with examples available here.  pyscal is a python module for the calculation of local " />
+<meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
 
 
   </head>
@@ -91,19 +101,36 @@
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="#">
-   Welcome to your Jupyter Book
+   pyscal - python Structural Environment Calculator
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  This is the first part
+  Getting started with pyscal
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="part1/01_getting_started.html">
    1. Getting started with pyscal
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finding neighbors
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="part2/intro.html">
+   1. Methods to calculate neighbors of a particle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="part2/02_finding_neighbors.html">
+   2. Calculating coordination numbers
   </a>
  </li>
 </ul>
@@ -159,6 +186,22 @@
 </div>
         <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/srmnitc/pyscal-webpage"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -173,6 +216,22 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#highlights">
+   Highlights
+  </a>
+  <ul class="nav section-nav flex-column">
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -180,12 +239,62 @@
         
               <div>
                 
-  <div class="section" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.</p>
-<p>Check out the content pages bundled with this sample book to get started.</p>
+  <div class="section" id="pyscal-python-structural-environment-calculator">
+<h1>pyscal - python Structural Environment Calculator<a class="headerlink" href="#pyscal-python-structural-environment-calculator" title="Permalink to this headline">¶</a></h1>
+<p>complete documentation with examples available
+<a class="reference external" href="https://pyscal.com/">here</a>.</p>
+<p><strong>pyscal</strong> is a python module for the calculation of local atomic
+structural environments including <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.28.784">Steinhardt’s bond orientational
+order
+parameters</a>
+during post-processing of atomistic simulation data. The core
+functionality of pyscal is written in C++ with python wrappers using
+<a class="reference external" href="https://pybind11.readthedocs.io/en/stable/intro.html">pybind11</a> which
+allows for fast calculations with possibilities for easy expansion in
+python.</p>
+<p>Steinhardt’s order parameters are widely used for <a class="reference external" href="https://aip.scitation.org/doi/full/10.1063/1.4774084">identification of
+crystal
+structures</a>. They
+are also used to identify if an atom is <a class="reference external" href="https://link.springer.com/chapter/10.1007/b99429">solid or
+liquid</a>. pyscal is
+inspired by
+<a class="reference external" href="https://homepage.univie.ac.at/wolfgang.lechner/bondorderparameter.html">BondOrderAnalysis</a>
+code, but has since incorporated many additions and modifications.
+pyscal module includes the following functionality-</p>
+<div class="section" id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fast and efficient calculations using C++ and expansion using
+python.</p></li>
+<li><p>calculation of Steinhardt’s order parameters and their <a class="reference external" href="https://aip.scitation.org/doi/full/10.1063/1.2977970">averaged
+version</a> and
+<a class="reference external" href="https://doi.org/10.1063/1.3656762">disorder parameters</a>.</p></li>
+<li><p>links with <a class="reference external" href="http://math.lbl.gov/voro++/">Voro++</a> code, for
+calculation of <a class="reference external" href="https://aip.scitation.org/doi/full/10.1063/1.4774084">Steinhardt parameters weighted using face area of
+Voronoi
+polyhedra</a>.</p></li>
+<li><p>classification of atoms as <a class="reference external" href="https://link.springer.com/chapter/10.1007/b99429">solid or
+liquid</a>.</p></li>
+<li><p>clustering of particles based on a user defined property.</p></li>
+<li><p>methods for calculating radial distribution function, voronoi volume
+of particles, number of vertices and face area of voronoi polyhedra
+and coordination number.</p></li>
+<li><p>calculation of angular parameters such as <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.47.15717">for identification of
+diamond
+structure</a>
+and <a class="reference external" href="https://doi.org/10.1103/PhysRevB.73.054104">Ackland-Jones</a>
+angular parameters.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevB.58.11085">Centrosymmetry
+parameter</a> for
+identification of defects.</p></li>
+<li><p><a class="reference external" href="https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045021">Adaptive common neighbor
+analysis</a>
+for identification of crystal structures.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -224,7 +333,7 @@ structured.</p>
     <div class="container">
       <p>
         
-          By Sarath Menon<br/>
+          By Sarath Menon, Grisell Díaz Leines, Jutta Rogal<br/>
         
             &copy; Copyright 2020.<br/>
       </p>
