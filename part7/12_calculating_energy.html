@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.2.2. Calculating energy &#8212; pyscal</title>
+    <title>Calculating energy &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,8 @@
     <link rel="canonical" href="https://pyscal.org/part7/12_calculating_energy.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.2.3. Entropy and enthalpy parameters" href="13_combining_energy_enthalpy.html" />
-    <link rel="prev" title="9.2.1. Entropy parameters" href="11_entropy_parameter.html" />
+    <link rel="next" title="Entropy and enthalpy parameters" href="13_combining_energy_enthalpy.html" />
+    <link rel="prev" title="Entropy parameters" href="11_entropy_parameter.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,135 +110,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Installation
+  Trying and installing
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/gettingstarted.html">
-   1. Getting started
+   Getting started
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Downloads
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/download.html">
-   1. Downloads
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Support, contributing and extending
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/extending.html">
-   1. Support, contributing and extending
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Citing the code
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/citing.html">
-   1. Citing the code
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Examples
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../part1/01_getting_started.html">
-   1. Getting started with pyscal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part2/intro.html">
-   2. Methods to calculate neighbors of a particle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part3/steinhardt.html">
-   3. Steinhardt’s parameters
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part3/disorder.html">
-   4. Disorder parameter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part3/solidliquid.html">
-   5. Classification of atoms as solid or liquid
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html">
-   6. Angular parameters
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part5/voronoiparameters.html">
-   7. Voronoi tessellation to identify local structures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
-   8. Centrosymmetry parameter
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="entropy_parameters.html">
-   9. Entropy - Enthalpy parameters
-  </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="11_entropy_parameter.html">
-     9.2.1. Entropy parameters
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     9.2.2. Calculating energy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="13_combining_energy_enthalpy.html">
-     9.2.3. Entropy and enthalpy parameters
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part8/10_short_range_order.html">
-   10. Cowley short range order parameter
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  API reference
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/api.html">
-   1. API reference
+   Downloads
   </a>
  </li>
 </ul>
@@ -250,31 +133,120 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/news.html">
-   1. News and updates
+   News and updates
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Credits
+  Examples
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part1/01_getting_started.html">
+   Getting started with pyscal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part2/intro.html">
+   Methods to calculate neighbors of a particle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/steinhardt.html">
+   Steinhardt’s parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/disorder.html">
+   Disorder parameter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/solidliquid.html">
+   Classification of atoms as solid or liquid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part4/angular.html">
+   Angular parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part5/voronoiparameters.html">
+   Voronoi tessellation to identify local structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
+   Centrosymmetry parameter
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="entropy_parameters.html">
+   Entropy - Enthalpy parameters
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_entropy_parameter.html">
+     Entropy parameters
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Calculating energy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_combining_energy_enthalpy.html">
+     Entropy and enthalpy parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part8/10_short_range_order.html">
+   Cowley short range order parameter
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  API reference
  </span>
 </p>
 <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/api.html">
+   API reference
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Support, contributing and extending
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/extending.html">
+   Support, contributing and extending
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/citing.html">
+   Citing the code
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/acknowledgements.html">
-   1. pyscal Team
+   pyscal Team
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  License
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/license.html">
-   1. License
+   License
   </a>
  </li>
 </ul>
@@ -360,7 +332,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/master?urlpath=lab/tree/pyscal/part7/12_calculating_energy.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/main?urlpath=lab/tree/pyscal/part7/12_calculating_energy.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -368,7 +340,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/master/pyscal/part7/12_calculating_energy.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/main/pyscal/part7/12_calculating_energy.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -389,7 +361,7 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interatomic-potentials">
-   9.2.2.1. Interatomic potentials
+   Interatomic potentials
   </a>
  </li>
 </ul>
@@ -404,14 +376,14 @@
               <div>
                 
   <div class="section" id="calculating-energy">
-<h1><span class="section-number">9.2.2. </span>Calculating energy<a class="headerlink" href="#calculating-energy" title="Permalink to this headline">¶</a></h1>
+<h1>Calculating energy<a class="headerlink" href="#calculating-energy" title="Permalink to this headline">¶</a></h1>
 <p>pyscal can also be used for quick energy calculations. The energy per atom can give an insight into the local environment. pyscal relies on the <a class="reference external" href="https://lammps.sandia.gov/doc/Python_library.html">python library interface</a> of <a class="reference external" href="https://lammps.sandia.gov/">LAMMPS</a> for calculation of energy. The python library interface, hence, is a requirement for energy calculation. The easiest way to set up the LAMMPS library is by installing LAMMPS through the conda package.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">lammps</span>
 </pre></div>
 </div>
 <p>Alternatively, <a class="reference external" href="https://lammps.sandia.gov/doc/Python_head.html">this page</a> provides information on how to compile manually.</p>
 <div class="section" id="interatomic-potentials">
-<h2><span class="section-number">9.2.2.1. </span>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">¶</a></h2>
+<h2>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">¶</a></h2>
 <p>An interatomic potential is also required for the calculation of energy. The potential can be of <a class="reference external" href="https://lammps.sandia.gov/doc/pair_style.html">any type that LAMMPS supports</a>. For this example, we will use an EAM potential for Mo which is provided in the file <code class="docutils literal notranslate"><span class="pre">Mo.set</span></code>.</p>
 <p>We start by importing the necessary modules,</p>
 <div class="cell docutils container">
@@ -580,8 +552,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="11_entropy_parameter.html" title="previous page"><span class="section-number">9.2.1. </span>Entropy parameters</a>
-    <a class='right-next' id="next-link" href="13_combining_energy_enthalpy.html" title="next page"><span class="section-number">9.2.3. </span>Entropy and enthalpy parameters</a>
+    <a class='left-prev' id="prev-link" href="11_entropy_parameter.html" title="previous page">Entropy parameters</a>
+    <a class='right-next' id="next-link" href="13_combining_energy_enthalpy.html" title="next page">Entropy and enthalpy parameters</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -604,6 +576,16 @@
   <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-148001112-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
     
   </body>
 </html>

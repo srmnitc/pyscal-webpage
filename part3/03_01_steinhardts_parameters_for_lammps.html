@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3.2. Analyzing a lammps trajectory &#8212; pyscal</title>
+    <title>Analyzing a lammps trajectory &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,8 @@
     <link rel="canonical" href="https://pyscal.org/part3/03_01_steinhardts_parameters_for_lammps.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Disorder parameter" href="disorder.html" />
-    <link rel="prev" title="3.3.1. Calculating bond orientational order parameters" href="03_steinhardt_parameters.html" />
+    <link rel="next" title="Disorder parameter" href="disorder.html" />
+    <link rel="prev" title="Calculating bond orientational order parameters" href="03_steinhardt_parameters.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,130 +110,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Installation
+  Trying and installing
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/gettingstarted.html">
-   1. Getting started
+   Getting started
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Downloads
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/download.html">
-   1. Downloads
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Support, contributing and extending
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/extending.html">
-   1. Support, contributing and extending
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Citing the code
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/citing.html">
-   1. Citing the code
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Examples
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../part1/01_getting_started.html">
-   1. Getting started with pyscal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part2/intro.html">
-   2. Methods to calculate neighbors of a particle
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="steinhardt.html">
-   3. Steinhardt’s parameters
-  </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_steinhardt_parameters.html">
-     3.3.1. Calculating bond orientational order parameters
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     3.3.2. Analyzing a lammps trajectory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="disorder.html">
-   4. Disorder parameter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="solidliquid.html">
-   5. Classification of atoms as solid or liquid
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html">
-   6. Angular parameters
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part5/voronoiparameters.html">
-   7. Voronoi tessellation to identify local structures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
-   8. Centrosymmetry parameter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part7/entropy_parameters.html">
-   9. Entropy - Enthalpy parameters
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part8/10_short_range_order.html">
-   10. Cowley short range order parameter
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  API reference
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../prologue/api.html">
-   1. API reference
+   Downloads
   </a>
  </li>
 </ul>
@@ -245,31 +133,115 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/news.html">
-   1. News and updates
+   News and updates
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Credits
+  Examples
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part1/01_getting_started.html">
+   Getting started with pyscal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part2/intro.html">
+   Methods to calculate neighbors of a particle
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="steinhardt.html">
+   Steinhardt’s parameters
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_steinhardt_parameters.html">
+     Calculating bond orientational order parameters
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analyzing a lammps trajectory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disorder.html">
+   Disorder parameter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solidliquid.html">
+   Classification of atoms as solid or liquid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part4/angular.html">
+   Angular parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part5/voronoiparameters.html">
+   Voronoi tessellation to identify local structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
+   Centrosymmetry parameter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part7/entropy_parameters.html">
+   Entropy - Enthalpy parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part8/10_short_range_order.html">
+   Cowley short range order parameter
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  API reference
  </span>
 </p>
 <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/api.html">
+   API reference
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Support, contributing and extending
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/extending.html">
+   Support, contributing and extending
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prologue/citing.html">
+   Citing the code
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/acknowledgements.html">
-   1. pyscal Team
+   pyscal Team
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  License
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../prologue/license.html">
-   1. License
+   License
   </a>
  </li>
 </ul>
@@ -355,7 +327,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/master?urlpath=lab/tree/pyscal/part3/03_01_steinhardts_parameters_for_lammps.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/main?urlpath=lab/tree/pyscal/part3/03_01_steinhardts_parameters_for_lammps.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -363,7 +335,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/master/pyscal/part3/03_01_steinhardts_parameters_for_lammps.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/main/pyscal/part3/03_01_steinhardts_parameters_for_lammps.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -384,12 +356,12 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-a-clustering-condition">
-   3.3.2.1. Adding a clustering condition
+   Adding a clustering condition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-ase">
-   3.3.2.2. Using ASE
+   Using ASE
   </a>
  </li>
 </ul>
@@ -404,7 +376,7 @@
               <div>
                 
   <div class="section" id="analyzing-a-lammps-trajectory">
-<h1><span class="section-number">3.3.2. </span>Analyzing a lammps trajectory<a class="headerlink" href="#analyzing-a-lammps-trajectory" title="Permalink to this headline">¶</a></h1>
+<h1>Analyzing a lammps trajectory<a class="headerlink" href="#analyzing-a-lammps-trajectory" title="Permalink to this headline">¶</a></h1>
 <p>In this example, a lammps trajectory in dump-text format will be read in, and Steinhardt’s parameters will be calculated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -488,7 +460,7 @@
 </div>
 </div>
 <div class="section" id="adding-a-clustering-condition">
-<h2><span class="section-number">3.3.2.1. </span>Adding a clustering condition<a class="headerlink" href="#adding-a-clustering-condition" title="Permalink to this headline">¶</a></h2>
+<h2>Adding a clustering condition<a class="headerlink" href="#adding-a-clustering-condition" title="Permalink to this headline">¶</a></h2>
 <p>We will now modify the above function to also find clusters which satisfy particular <span class="math notranslate nohighlight">\(q_6\)</span> value. But first, for a single file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -631,7 +603,7 @@
 </div>
 </div>
 <div class="section" id="using-ase">
-<h2><span class="section-number">3.3.2.2. </span>Using <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a><a class="headerlink" href="#using-ase" title="Permalink to this headline">¶</a></h2>
+<h2>Using <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a><a class="headerlink" href="#using-ase" title="Permalink to this headline">¶</a></h2>
 <p>The above example can also done using ASE. The ASE read method needs to be imported.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,8 +688,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_steinhardt_parameters.html" title="previous page"><span class="section-number">3.3.1. </span>Calculating bond orientational order parameters</a>
-    <a class='right-next' id="next-link" href="disorder.html" title="next page"><span class="section-number">4. </span>Disorder parameter</a>
+    <a class='left-prev' id="prev-link" href="03_steinhardt_parameters.html" title="previous page">Calculating bond orientational order parameters</a>
+    <a class='right-next' id="next-link" href="disorder.html" title="next page">Disorder parameter</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -740,6 +712,16 @@
   <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-148001112-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
     
   </body>
 </html>
