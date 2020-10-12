@@ -3,6 +3,22 @@
 - file: intro
   numbered: true
 
+- part: Installation
+  chapters:
+  - file: prologue/gettingstarted.md
+
+- part: Downloads
+  chapters:
+  - file: prologue/download.md
+
+- part: Support, contributing and extending
+  chapters:
+  - file: prologue/extending.md
+
+- part: Citing the code
+  chapters:
+  - file: prologue/citing.md
+
 - part: Examples
   chapters:
   - file: part1/01_getting_started.ipynb
@@ -36,3 +52,19 @@
     - file: part7/12_calculating_energy.ipynb
     - file: part7/13_combining_energy_enthalpy.ipynb
   - file: part8/10_short_range_order.ipynb
+
+  - part: API reference
+    chapters:
+    - file: prologue/api.md
+
+  - part: News
+    chapters:
+    - file: prologue/news.md
+
+  - part: Credits
+    chapters:
+    - file: prologue/acknowledgements.md
+
+  - part: License
+    chapters:
+    - file: prologue/license.md
