@@ -1,4 +1,4 @@
-#Angular parameters
+# Angular parameters
 
 ## Angular criteria for identification of diamond structure
 

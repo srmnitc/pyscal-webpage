@@ -27,12 +27,12 @@
   - file: part5/voronoiparameters.md
     sections:
     - file: part5/06_voronoi_tessellation.ipynb
-  - file: part6/centrosymmetry_parameters.md
+  - file: part6/centrosymmetry_parameter.md
     sections:
-    - file: part6/centrosymmetry_parameters.ipynb
+    - file: part6/09_centrosymmetry_parameter.ipynb
   - file: part7/entropy_parameters.md
     sections:
     - file: part7/11_entropy_parameter.ipynb
     - file: part7/12_calculating_energy.ipynb
-    - file: part8/13_combining_energy_enthalpy.ipynb
+    - file: part7/13_combining_energy_enthalpy.ipynb
   - file: part8/10_short_range_order.ipynb
