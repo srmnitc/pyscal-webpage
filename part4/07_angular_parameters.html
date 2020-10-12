@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.1. Angular parameter &#8212; pyscal</title>
+    <title>6.3.1. Angular parameter &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,8 @@
     <link rel="canonical" href="https://pyscal.org/part4/07_angular_parameters.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.2. \(\chi\) parameters" href="08_chi_params.html" />
-    <link rel="prev" title="6. Angular criteria for identification of diamond structure" href="angular.html" />
+    <link rel="next" title="6.3.2. \(\chi\) parameters" href="08_chi_params.html" />
+    <link rel="prev" title="6. Angular parameters" href="angular.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -139,33 +139,19 @@
    5. Classification of atoms as solid or liquid
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="angular.html">
-   6. Angular criteria for identification of diamond structure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="angular.html#chi-parameters-for-structural-identification">
-   7.
-   <span class="math notranslate nohighlight">
-    \(\chi\)
-   </span>
-   parameters for structural identification
-  </a>
- </li>
  <li class="toctree-l1 current active">
-  <a class="reference internal" href="angular.html#references">
-   8. References
+  <a class="reference internal" href="angular.html">
+   6. Angular parameters
   </a>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.1. Angular parameter
+     6.3.1. Angular parameter
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08_chi_params.html">
-     8.2.
+     6.3.2.
      <span class="math notranslate nohighlight">
       \(\chi\)
      </span>
@@ -176,17 +162,22 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part5/voronoiparameters.html">
-   9. Voronoi tessellation to identify local structures
+   7. Voronoi tessellation to identify local structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
+   8. Centrosymmetry parameter
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part7/entropy_parameters.html">
-   10. Entropy - Enthalpy parameters
+   9. Entropy - Enthalpy parameters
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part8/10_short_range_order.html">
-   11. Cowley short range order parameter
+   10. Cowley short range order parameter
   </a>
  </li>
 </ul>
@@ -301,7 +292,7 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-structures">
-   8.1.1. Create structures
+   6.3.1.1. Create structures
   </a>
  </li>
 </ul>
@@ -316,7 +307,7 @@
               <div>
                 
   <div class="section" id="angular-parameter">
-<h1><span class="section-number">8.1. </span>Angular parameter<a class="headerlink" href="#angular-parameter" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.3.1. </span>Angular parameter<a class="headerlink" href="#angular-parameter" title="Permalink to this headline">¶</a></h1>
 <p>This illustartes the use of angular parameter to identify diamond structure. Angular parameter was introduced by <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.47.15717">Uttomark et al.</a>, and measures the tetrahedrality of the local atomic structure. An atom belonging to diamond structure has four nearest neighbors which gives rise to six three body angles around the atom. The angular parameter <span class="math notranslate nohighlight">\(A\)</span> is then defined as,</p>
 <p><span class="math notranslate nohighlight">\(A = \sum_{i=1}^6 (\cos(\theta_i)+\frac{1}{3})^2\)</span></p>
 <p>An atom belonging to diamond structure would show the value of angular params close to 0. The following example illustrates the use of this parameter.</p>
@@ -331,7 +322,7 @@
 </div>
 </div>
 <div class="section" id="create-structures">
-<h2><span class="section-number">8.1.1. </span>Create structures<a class="headerlink" href="#create-structures" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3.1.1. </span>Create structures<a class="headerlink" href="#create-structures" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to create some structures using the pyscal crystal structures module and assign it to a System. This can be done as follows-</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -400,8 +391,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="angular.html" title="previous page"><span class="section-number">6. </span>Angular criteria for identification of diamond structure</a>
-    <a class='right-next' id="next-link" href="08_chi_params.html" title="next page"><span class="section-number">8.2. </span><span class="math notranslate nohighlight">\(\chi\)</span> parameters</a>
+    <a class='left-prev' id="prev-link" href="angular.html" title="previous page"><span class="section-number">6. </span>Angular parameters</a>
+    <a class='right-next' id="next-link" href="08_chi_params.html" title="next page"><span class="section-number">6.3.2. </span><span class="math notranslate nohighlight">\(\chi\)</span> parameters</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

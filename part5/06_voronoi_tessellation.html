@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.1.1. Voronoi parameters &#8212; pyscal</title>
+    <title>7.1.1. Voronoi parameters &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,8 @@
     <link rel="canonical" href="https://pyscal.org/part5/06_voronoi_tessellation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Entropy - Enthalpy parameters" href="../part7/entropy_parameters.html" />
-    <link rel="prev" title="9. Voronoi tessellation to identify local structures" href="voronoiparameters.html" />
+    <link rel="next" title="8. Centrosymmetry parameter" href="../part6/centrosymmetry_parameter.html" />
+    <link rel="prev" title="7. Voronoi tessellation to identify local structures" href="voronoiparameters.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -141,48 +141,39 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part4/angular.html">
-   6. Angular criteria for identification of diamond structure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html#chi-parameters-for-structural-identification">
-   7.
-   <span class="math notranslate nohighlight">
-    \(\chi\)
-   </span>
-   parameters for structural identification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html#references">
-   8. References
+   6. Angular parameters
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="reference internal" href="voronoiparameters.html">
-   9. Voronoi tessellation to identify local structures
+   7. Voronoi tessellation to identify local structures
   </a>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.1.1. Voronoi parameters
+     7.1.1. Voronoi parameters
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="#voronoi-volume">
-     9.1.2. Voronoi volume
+     7.1.2. Voronoi volume
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
+   8. Centrosymmetry parameter
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../part7/entropy_parameters.html">
-   10. Entropy - Enthalpy parameters
+   9. Entropy - Enthalpy parameters
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part8/10_short_range_order.html">
-   11. Cowley short range order parameter
+   10. Cowley short range order parameter
   </a>
  </li>
 </ul>
@@ -297,12 +288,12 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   9.1.1. Voronoi parameters
+   7.1.1. Voronoi parameters
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#voronoi-volume">
-   9.1.2. Voronoi volume
+   7.1.2. Voronoi volume
   </a>
  </li>
 </ul>
@@ -317,7 +308,7 @@
               <div>
                 
   <div class="section" id="voronoi-parameters">
-<h1><span class="section-number">9.1.1. </span>Voronoi parameters<a class="headerlink" href="#voronoi-parameters" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.1.1. </span>Voronoi parameters<a class="headerlink" href="#voronoi-parameters" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://pyscal.com/en/latest/methods/voronoiparameters/voronoiparameters.html">Voronoi tessellation</a> can be used to identify local structure by counting the number of faces of the Voronoi polyhedra of an atom. For each atom a vector <span class="math notranslate nohighlight">\(\langle n3~n4~n5~n6\)</span> can be calculated where <span class="math notranslate nohighlight">\(n_3\)</span> is the number of Voronoi faces of the associated Voronoi polyhedron with three vertices, <span class="math notranslate nohighlight">\(n_4\)</span> is with four vertices and so on. Each perfect crystal structure such as a signature vector, for example, bcc can be identified by <span class="math notranslate nohighlight">\(\langle 0~6~0~8 \rangle\)</span> and fcc can be identified using <span class="math notranslate nohighlight">\(\langle 0~12~0~0 \rangle\)</span>. It is also a useful tool for identifying icosahedral structure which has the fingerprint <span class="math notranslate nohighlight">\(\langle 0~0~12~0 \rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,7 +418,7 @@
 <p>The difference in Voronoi fingerprint for bcc and the closed packed structures is clearly visible. Voronoi tessellation, however, is incapable of distinction between fcc and hcp structures.</p>
 </div>
 <div class="section" id="voronoi-volume">
-<h1><span class="section-number">9.1.2. </span>Voronoi volume<a class="headerlink" href="#voronoi-volume" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.1.2. </span>Voronoi volume<a class="headerlink" href="#voronoi-volume" title="Permalink to this headline">¶</a></h1>
 <p>Voronoi volume, which is the volume of the Voronoi polyhedron is calculated when the neighbors are found. The volume can be accessed using the :attr:<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.volume</span></code> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -485,8 +476,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="voronoiparameters.html" title="previous page"><span class="section-number">9. </span>Voronoi tessellation to identify local structures</a>
-    <a class='right-next' id="next-link" href="../part7/entropy_parameters.html" title="next page"><span class="section-number">10. </span>Entropy - Enthalpy parameters</a>
+    <a class='left-prev' id="prev-link" href="voronoiparameters.html" title="previous page"><span class="section-number">7. </span>Voronoi tessellation to identify local structures</a>
+    <a class='right-next' id="next-link" href="../part6/centrosymmetry_parameter.html" title="next page"><span class="section-number">8. </span>Centrosymmetry parameter</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

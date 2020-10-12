@@ -58,7 +58,7 @@
     <link rel="canonical" href="https://pyscal.org/part3/05_distinguishing_solid_liquid.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Angular criteria for identification of diamond structure" href="../part4/angular.html" />
+    <link rel="next" title="6. Angular parameters" href="../part4/angular.html" />
     <link rel="prev" title="5. Classification of atoms as solid or liquid" href="solidliquid.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -153,36 +153,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part4/angular.html">
-   6. Angular criteria for identification of diamond structure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html#chi-parameters-for-structural-identification">
-   7.
-   <span class="math notranslate nohighlight">
-    \(\chi\)
-   </span>
-   parameters for structural identification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part4/angular.html#references">
-   8. References
+   6. Angular parameters
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part5/voronoiparameters.html">
-   9. Voronoi tessellation to identify local structures
+   7. Voronoi tessellation to identify local structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part6/centrosymmetry_parameter.html">
+   8. Centrosymmetry parameter
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part7/entropy_parameters.html">
-   10. Entropy - Enthalpy parameters
+   9. Entropy - Enthalpy parameters
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part8/10_short_range_order.html">
-   11. Cowley short range order parameter
+   10. Cowley short range order parameter
   </a>
  </li>
 </ul>
@@ -327,7 +318,7 @@
 <h1><span class="section-number">5.1.1. </span>Distinction of solid liquid atoms and clustering<a class="headerlink" href="#distinction-of-solid-liquid-atoms-and-clustering" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we will take one snapshot from a molecular dynamics simulation which has a solid cluster in liquid. The task is to identify solid atoms and cluster them. More details about the method can be found <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/solidliquid.html">here</a>.</p>
 <p>The first step is, of course, importing all the necessary module. For visualisation, we will use <a class="reference external" href="https://www.ovito.org/">Ovito</a>.</p>
-<p><img alt="alt text" src="part3/../docs/source/system1.png" /></p>
+<p><img alt="alt text" src="../_images/system1.png" /></p>
 <p>The above image shows a visualisation of the system using Ovito. Importing modules,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -378,7 +369,7 @@
 </div>
 </div>
 <p>We can now visualise this file in Ovito. After opening the file in Ovito, the modifier <a class="reference external" href="https://ovito.org/manual/particles.modifiers.compute_property.html">compute property</a> can be selected. The <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">property</span></code> should be <code class="docutils literal notranslate"><span class="pre">selection</span></code> and in the expression field, <code class="docutils literal notranslate"><span class="pre">solid==0</span></code> can be selected to select all the non solid atoms. Applying a modifier <a class="reference external" href="https://ovito.org/manual/particles.modifiers.delete_selected_particles.html">delete selected particles</a> can be applied to delete all the non solid particles. The system after removing all the liquid atoms is shown below.</p>
-<p><img alt="alt text" src="part3/../docs/source/system2.png" /></p>
+<p><img alt="alt text" src="../_images/system2.png" /></p>
 <div class="section" id="clustering-algorithm">
 <h2><span class="section-number">5.1.1.1. </span>Clustering algorithm<a class="headerlink" href="#clustering-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>You can see that there is a cluster of atom. The clustering functions that pyscal offers helps in this regard. If you used <code class="docutils literal notranslate"><span class="pre">find_clusters</span></code> with <code class="docutils literal notranslate"><span class="pre">cluster=True</span></code>, the clustering is carried out. Since we did used <code class="docutils literal notranslate"><span class="pre">cluster=False</span></code> above, we will rerun the function</p>
@@ -418,7 +409,7 @@
 </div>
 </div>
 <p>The system visualised in Ovito following similar steps as above is shown below.</p>
-<p><img alt="alt text" src="part3/../docs/source/system3.png" /></p>
+<p><img alt="alt text" src="../_images/system3.png" /></p>
 <p>It is clear from the image that the largest cluster of solid atoms was successfully identified. Clustering can be done over any property. The following example with the same system will illustrate this.</p>
 </div>
 </div>
@@ -483,7 +474,7 @@
 </div>
 </div>
 </div>
-<p><img alt="alt text" src="part3/../docs/source/system4.png" /></p>
+<p><img alt="alt text" src="../_images/system4.png" /></p>
 <p>This example illustrates that any property can be used to cluster the atoms!</p>
 </div>
 
@@ -496,16 +487,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "lammps"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "lammps",
+            kernelName: "python3",
             path: "./part3"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'lammps'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -516,7 +507,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="solidliquid.html" title="previous page"><span class="section-number">5. </span>Classification of atoms as solid or liquid</a>
-    <a class='right-next' id="next-link" href="../part4/angular.html" title="next page"><span class="section-number">6. </span>Angular criteria for identification of diamond structure</a>
+    <a class='right-next' id="next-link" href="../part4/angular.html" title="next page"><span class="section-number">6. </span>Angular parameters</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
