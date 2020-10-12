@@ -12,7 +12,7 @@
       title: Examples - finding neighbors
   - file: part3/steinhardt.md
     sections:
-    - file: part3/03_steinhardt_parameters.ipynb.ipynb
+    - file: part3/03_steinhardt_parameters.ipynb
     - file: part3/03_01_steinhardts_parameters_for_lammps.ipynb
   - file: part3/disorder.md
     sections:
