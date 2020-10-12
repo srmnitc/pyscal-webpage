@@ -3,11 +3,14 @@
 - file: intro
   numbered: true
 
-- part: Getting started with pyscal
+- part: Examples
   chapters:
   - file: part1/01_getting_started.ipynb
-
-- part: Finding neighbors
-  chapters:
   - file: part2/intro.md
-  - file: part2/02_finding_neighbors.ipynb
+    sections:
+    - file: part2/02_finding_neighbors.ipynb
+      title: Examples - finding neighbors
+  - file: part3/steinhardt.md
+    sections:
+    - file: part3/03_steinhardt_parameters.ipynb.ipynb
+    - file: part3/03_01_steinhardts_parameters_for_lammps.ipynb
