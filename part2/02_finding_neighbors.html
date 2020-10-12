@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Calculating coordination numbers &#8212; pyscal</title>
+    <title>2.4.1. Calculating coordination numbers &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -46,6 +46,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,7 +58,8 @@
     <link rel="canonical" href="https://pyscal.org/part2/02_finding_neighbors.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="1. Methods to calculate neighbors of a particle" href="intro.html" />
+    <link rel="next" title="3. Steinhardt’s parameters" href="../part3/steinhardt.html" />
+    <link rel="prev" title="2. Methods to calculate neighbors of a particle" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,30 +110,30 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Getting started with pyscal
+  Examples
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../part1/01_getting_started.html">
    1. Getting started with pyscal
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Finding neighbors
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   1. Methods to calculate neighbors of a particle
-  </a>
- </li>
  <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   2. Calculating coordination numbers
+  <a class="reference internal" href="intro.html">
+   2. Methods to calculate neighbors of a particle
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.4.1. Examples - finding neighbors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/steinhardt.html">
+   3. Steinhardt’s parameters
   </a>
  </li>
 </ul>
@@ -245,34 +248,34 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#read-in-a-file">
-   2.1. Read in a file
+   2.4.1.1. Read in a file
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#calculating-neighbors">
-   2.2. Calculating neighbors
+   2.4.1.2. Calculating neighbors
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cutoff-method">
-     2.2.1. Cutoff method
+     2.4.1.2.1. Cutoff method
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adaptive-cutoff-methods">
-   2.3. Adaptive cutoff methods
+   2.4.1.3. Adaptive cutoff methods
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#voronoi-method">
-   2.4. Voronoi method
+   2.4.1.4. Voronoi method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#finally">
-   2.5. Finally..
+   2.4.1.5. Finally..
   </a>
  </li>
 </ul>
@@ -287,7 +290,7 @@
               <div>
                 
   <div class="section" id="calculating-coordination-numbers">
-<h1><span class="section-number">2. </span>Calculating coordination numbers<a class="headerlink" href="#calculating-coordination-numbers" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.4.1. </span>Calculating coordination numbers<a class="headerlink" href="#calculating-coordination-numbers" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we will read in a configuration from an MD simulation and then calculate the coordination number distribution.<br />
 This example assumes that you read the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html#basic-examples">basic example</a>.</p>
 <div class="cell docutils container">
@@ -300,7 +303,7 @@ This example assumes that you read the <a class="reference external" href="https
 </div>
 </div>
 <div class="section" id="read-in-a-file">
-<h2><span class="section-number">2.1. </span>Read in a file<a class="headerlink" href="#read-in-a-file" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4.1.1. </span>Read in a file<a class="headerlink" href="#read-in-a-file" title="Permalink to this headline">¶</a></h2>
 <p>The first step is setting up a system. We can create atoms and simulation box using the <code class="docutils literal notranslate"><span class="pre">pyscal.crystal_structures</span></code> module. Let us start by importing the module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -328,10 +331,10 @@ This example assumes that you read the <a class="reference external" href="https
 </div>
 </div>
 <div class="section" id="calculating-neighbors">
-<h2><span class="section-number">2.2. </span>Calculating neighbors<a class="headerlink" href="#calculating-neighbors" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4.1.2. </span>Calculating neighbors<a class="headerlink" href="#calculating-neighbors" title="Permalink to this headline">¶</a></h2>
 <p>We start by calculating the neighbors of each atom in the system. There are two ways to do this, using a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> method and using a <code class="docutils literal notranslate"><span class="pre">voronoi</span></code> polyhedra method. We will try with both of them. First we try with cutoff system - which has three sub options. We will check each of them in detail.</p>
 <div class="section" id="cutoff-method">
-<h3><span class="section-number">2.2.1. </span>Cutoff method<a class="headerlink" href="#cutoff-method" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.4.1.2.1. </span>Cutoff method<a class="headerlink" href="#cutoff-method" title="Permalink to this headline">¶</a></h3>
 <p>Cutoff method takes cutoff distance value and finds all atoms within the cutoff distance of the host atom.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -401,7 +404,7 @@ This example assumes that you read the <a class="reference external" href="https
 </div>
 </div>
 <div class="section" id="adaptive-cutoff-methods">
-<h2><span class="section-number">2.3. </span>Adaptive cutoff methods<a class="headerlink" href="#adaptive-cutoff-methods" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4.1.3. </span>Adaptive cutoff methods<a class="headerlink" href="#adaptive-cutoff-methods" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pyscal</span></code> also has adaptive cutoff methods implemented. These methods remove the restriction on having the same cutoff. A distinct cutoff is selected for each atom during runtime. <code class="docutils literal notranslate"><span class="pre">pyscal</span></code> uses two distinct algorithms to do this - <code class="docutils literal notranslate"><span class="pre">sann</span></code> and <code class="docutils literal notranslate"><span class="pre">adaptive</span></code>. Please check the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">documentation</a> for a explanation of these algorithms.  For the purpose of this example, we will use the <code class="docutils literal notranslate"><span class="pre">adaptive</span></code> algorithm.</p>
 <p><code class="docutils literal notranslate"><span class="pre">adaptive</span> <span class="pre">algorithm</span></code></p>
 <div class="cell docutils container">
@@ -434,7 +437,7 @@ This example assumes that you read the <a class="reference external" href="https
 <p>The adaptive method also gives similar results!</p>
 </div>
 <div class="section" id="voronoi-method">
-<h2><span class="section-number">2.4. </span>Voronoi method<a class="headerlink" href="#voronoi-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4.1.4. </span>Voronoi method<a class="headerlink" href="#voronoi-method" title="Permalink to this headline">¶</a></h2>
 <p>Voronoi method calculates the voronoi polyhedra of all atoms. Any atom that shares a voronoi face area with the host atom are considered neighbors. Voronoi polyhedra is calculated using the <a class="reference external" href="http://math.lbl.gov/voro++/">Voro++</a> code. However, you dont need to install this specifically as it is linked to pyscal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -472,7 +475,7 @@ This example assumes that you read the <a class="reference external" href="https
 </div>
 </div>
 <div class="section" id="finally">
-<h2><span class="section-number">2.5. </span>Finally..<a class="headerlink" href="#finally" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4.1.5. </span>Finally..<a class="headerlink" href="#finally" title="Permalink to this headline">¶</a></h2>
 <p>All methods find the coordination number, and the results are comparable. Cutoff method is very sensitive to the choice of cutoff radius, but voronoi method can slightly overestimate the neighbors due to thermal vibrations.</p>
 </div>
 </div>
@@ -505,7 +508,8 @@ This example assumes that you read the <a class="reference external" href="https
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page"><span class="section-number">1. </span>Methods to calculate neighbors of a particle</a>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page"><span class="section-number">2. </span>Methods to calculate neighbors of a particle</a>
+    <a class='right-next' id="next-link" href="../part3/steinhardt.html" title="next page"><span class="section-number">3. </span>Steinhardt’s parameters</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

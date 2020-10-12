@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Steinhardt’s parameters &#8212; pyscal</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pyscal.org/part3/steinhardt.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3.1. Analyzing a lammps trajectory" href="03_01_steinhardts_parameters_for_lammps.html" />
+    <link rel="prev" title="2.4.1. Calculating coordination numbers" href="../part2/02_finding_neighbors.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://pyscal.org/part3/steinhardt.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Steinhardt’s parameters" />
+<meta property="og:description" content="Steinhardt’s parameters  Steinhardt’s bond orientational order parameters [1] are a set of parameters based on spherical harmonics to explore the local atomic e" />
+<meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">pyscal</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   pyscal - python Structural Environment Calculator
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part1/01_getting_started.html">
+   1. Getting started with pyscal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part2/intro.html">
+   2. Methods to calculate neighbors of a particle
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Steinhardt’s parameters
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_01_steinhardts_parameters_for_lammps.html">
+     3.3.1. Analyzing a lammps trajectory
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/part3/steinhardt.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/srmnitc/pyscal-webpage"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/steinhardt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#averaged-steinhardt-s-parameters">
+   3.1. Averaged Steinhardt’s parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voronoi-weighted-steinhardt-s-parameters">
+   3.2. Voronoi weighted Steinhardt’s parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   3.3. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="steinhardt-s-parameters">
+<h1><span class="section-number">3. </span>Steinhardt’s parameters<a class="headerlink" href="#steinhardt-s-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Steinhardt’s bond orientational order parameters <a class="bibtex reference internal" href="#steinhardt1983" id="id1">[1]</a> are a set of
+parameters based on <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical
+harmonics</a> to explore
+the local atomic environment. These parameters have been used
+extensively for various uses such as distinction of crystal structures,
+identification of solid and liquid atoms and identification of
+defects <a class="bibtex reference internal" href="#steinhardt1983" id="id2">[1]</a>.</p>
+<p>These parameters, which are rotationally and translationally invariant
+are defined by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ q_l (i) =  \Big(  \frac{4\pi}{2l+1}  \sum_{m=-l}^l | q_{lm}(i) |^2 \Big )^{\frac{1}{2}} \]</div>
+</div></blockquote>
+<p>where,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ q_{lm} (i) =  \frac{1}{N(i)} \sum_{j=1}^{N(i)} Y_{lm}(\pmb{r}_{ij}) \]</div>
+</div></blockquote>
+<p>in which <span class="math notranslate nohighlight">\(Y_{lm}\)</span> are the spherical harmonics and <span class="math notranslate nohighlight">\(N(i)\)</span> is the number
+of neighbours of particle <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\pmb{r}_{ij}\)</span> is the vector connecting
+particles <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are both intergers with
+<span class="math notranslate nohighlight">\(m \in [-l,+l]\)</span>. Various parameters have found specific uses, such as
+<span class="math notranslate nohighlight">\(q_2\)</span> and <span class="math notranslate nohighlight">\(q_6\)</span> for identification of crystallinity, <span class="math notranslate nohighlight">\(q_6\)</span> for
+identification of solidity, and <span class="math notranslate nohighlight">\(q_4\)</span> and <span class="math notranslate nohighlight">\(q_6\)</span> for distinction of
+crystal structures <a class="bibtex reference internal" href="#mickel2013" id="id3">[2]</a>. Commonly this method uses a cutoff radius to
+identify the neighbors of an atom. The cutoff can be chosen based on
+<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">different methods
+available</a>.
+Once the cutoff is chosen and neighbors are calculated, the calculation
+of Steinhardt’s parameters is straightforward.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="averaged-steinhardt-s-parameters">
+<h2><span class="section-number">3.1. </span>Averaged Steinhardt’s parameters<a class="headerlink" href="#averaged-steinhardt-s-parameters" title="Permalink to this headline">¶</a></h2>
+<p>At high temperatures, thermal vibrations affect the atomic positions.
+This in turn leads to overlapping distributions of <span class="math notranslate nohighlight">\(q_l\)</span> parameters,
+which makes the identification of crystal structures difficult. To
+address this problem, the averaged version <span class="math notranslate nohighlight">\(\bar{q}_l\)</span> of Steinhardt’s
+parameters was introduced by Lechner and Dellago <a class="bibtex reference internal" href="#lechner2008" id="id4">[3]</a>. <span class="math notranslate nohighlight">\(\bar{q}_l\)</span> is
+given by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\bar{q}_l (i) =  \Big(  \frac{4\pi}{2l+1}  \sum_{m=-l}^l \Big| \frac{1}{\tilde{N}(i)} \sum_{k=0}^{\tilde{N}(i)} q_{lm}(k) \Big|^2 \Big )^{\frac{1}{2}}\]</div>
+</div></blockquote>
+<p>where the sum from <span class="math notranslate nohighlight">\(k=0\)</span> to <span class="math notranslate nohighlight">\(\tilde{N}(i)\)</span> is over all the neighbors and
+the particle itself. The averaged parameters takes into account the
+first neighbor shell and also information from the neighboring atoms and
+thus reduces the overlap between the distributions. Commonly <span class="math notranslate nohighlight">\(\bar{q}_4\)</span>
+and <span class="math notranslate nohighlight">\(\bar{q}_6\)</span> are used in identification of crystal structures.
+Averaged versions can be calculated by setting the keyword
+<code class="docutils literal notranslate"><span class="pre">averaged=True</span></code> as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="voronoi-weighted-steinhardt-s-parameters">
+<h2><span class="section-number">3.2. </span>Voronoi weighted Steinhardt’s parameters<a class="headerlink" href="#voronoi-weighted-steinhardt-s-parameters" title="Permalink to this headline">¶</a></h2>
+<p>In order to improve the resolution of crystal structures Mickel et
+al <a class="bibtex reference internal" href="#mickel2013" id="id5">[2]</a> proposed weighting the contribution of each neighbor to the
+Steinhardt parameters by the ratio of the area of the Voronoi facet
+shared between the neighbor and host atom. The weighted parameters are
+given by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[q_{lm} (i) =  \frac{1}{N(i)} \sum_{j=1}^{N(i)} \frac{A_{ij}}{A} Y_{lm}(\pmb{r}_{ij})\]</div>
+</div></blockquote>
+<p>where <span class="math notranslate nohighlight">\(A_{ij}\)</span> is the area of the Voronoi facet between atoms <span class="math notranslate nohighlight">\(i\)</span> and
+<span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is the sum of the face areas of atom <span class="math notranslate nohighlight">\(i\)</span>. In pyscal, the
+area weights are already assigned during the neighbor calculation phase
+when the Voronoi method is used to calculate neighbors in the
+<code class="docutils literal notranslate"><span class="pre">~pyscal.core.System.find_neighbors</span></code>{.interpreted-text role=”func”}. The
+Voronoi weighted Steinhardt’s parameters can be calculated as follows,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The weighted Steinhardt’s parameters can also be averaged as described
+above. Once again, the keyword <code class="docutils literal notranslate"><span class="pre">averaged=True</span></code> can be used for this
+purpose.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It was also proposed that higher powers of the weight <a class="bibtex reference internal" href="#haeberle2019" id="id6">[4]</a>
+<span class="math notranslate nohighlight">\(\frac{A_{ij}^{\alpha}}{A(\alpha)}\)</span> where <span class="math notranslate nohighlight">\(\alpha = 2, 3\)</span> can also be
+used, where <span class="math notranslate nohighlight">\(A(\alpha) = \sum_{j=1}^{N(i)} A_{ij}^{\alpha}\)</span> The value of
+this can be set using the keyword <code class="docutils literal notranslate"><span class="pre">voroexp</span></code> during the neighbor
+calculation phase.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">,</span> <span class="n">voroexp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the value of <code class="docutils literal notranslate"><span class="pre">voroexp</span></code> is set to 0, the neighbors would be found
+using Voronoi method, but the calculated Steinhardt’s parameters will
+not be weighted.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">3.3. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-part3/steinhardt-0"><dl class="citation">
+<dt class="bibtex label" id="steinhardt1983"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Paul J. Steinhardt, David R. Nelson, and Marco Ronchetti. Bond-orientational order in liquids and glasses. <em>Physical Review B</em>, 28(2):784–805, 1983. ISBN: 0163-1829. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.28.784">doi:10.1103/PhysRevB.28.784</a>.</p>
+</dd>
+<dt class="bibtex label" id="mickel2013"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Walter Mickel, Sebastian C. Kapfer, Gerd E. Schröder-Turk, and Klaus Mecke. Shortcomings of the bond orientational order parameters for the analysis of disordered particulate matter. <em>Journal of Chemical Physics</em>, 2013. <a class="reference external" href="https://doi.org/10.1063/1.4774084">doi:10.1063/1.4774084</a>.</p>
+</dd>
+<dt class="bibtex label" id="lechner2008"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Wolfgang Lechner and Christoph Dellago. Accurate determination of crystal structures based on averaged local bond order parameters. <em>Journal of Chemical Physics</em>, 2008. <a class="reference external" href="https://doi.org/10.1063/1.2977970">doi:10.1063/1.2977970</a>.</p>
+</dd>
+<dt class="bibtex label" id="haeberle2019"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><p>Jan Haeberle, Matthias Sperl, and Philip Born. Distinguishing noisy crystalline structures using bond orientational order parameters. <em>The European Physical Journal E</em>, 42(11):149, November 2019. URL: <a class="reference external" href="http://link.springer.com/10.1140/epje/i2019-11915-7">http://link.springer.com/10.1140/epje/i2019-11915-7</a>, <a class="reference external" href="https://doi.org/10.1140/epje/i2019-11915-7">doi:10.1140/epje/i2019-11915-7</a>.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./part3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../part2/02_finding_neighbors.html" title="previous page"><span class="section-number">2.4.1. </span>Calculating coordination numbers</a>
+    <a class='right-next' id="next-link" href="03_01_steinhardts_parameters_for_lammps.html" title="next page"><span class="section-number">3.3.1. </span>Analyzing a lammps trajectory</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sarath Menon, Grisell Díaz Leines, Jutta Rogal<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

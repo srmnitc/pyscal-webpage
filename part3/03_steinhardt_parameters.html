@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculating bond orientational order parameters &#8212; pyscal</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pyscal.org/part3/03_steinhardt_parameters.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://pyscal.org/part3/03_steinhardt_parameters.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Calculating bond orientational order parameters" />
+<meta property="og:description" content="Calculating bond orientational order parameters  This example illustrates the calculation of bond orientational order parameters. Bond order parameters, q_l and" />
+<meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">pyscal</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   pyscal - python Structural Environment Calculator
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part1/01_getting_started.html">
+   1. Getting started with pyscal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part2/intro.html">
+   2. Methods to calculate neighbors of a particle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="steinhardt.html">
+   3. Steinhardt’s parameters
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/part3/03_steinhardt_parameters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/srmnitc/pyscal-webpage"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/03_steinhardt_parameters.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/master?urlpath=lab/tree/pyscal/part3/03_steinhardt_parameters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/master/pyscal/part3/03_steinhardt_parameters.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perfect-structures">
+   Perfect structures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-cutoff-distance">
+     Finding the cutoff distance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steinhardt-s-parameters-cutoff-neighbor-method">
+     Steinhardt’s parameters - cutoff neighbor method
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structures-with-thermal-vibrations">
+   Structures with thermal vibrations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cutoff-method">
+     cutoff method
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="calculating-bond-orientational-order-parameters">
+<h1>Calculating bond orientational order parameters<a class="headerlink" href="#calculating-bond-orientational-order-parameters" title="Permalink to this headline">¶</a></h1>
+<p>This example illustrates the calculation of bond orientational order parameters. Bond order parameters, <span class="math notranslate nohighlight">\(q_l\)</span> and their averaged versions, <span class="math notranslate nohighlight">\(\bar{q}_l\)</span> are widely used to  identify atoms belong to different crystal structures. In this example, we will consider bcc, fcc, and hcp, and calculate the <span class="math notranslate nohighlight">\(q_4\)</span> and <span class="math notranslate nohighlight">\(q_6\)</span> parameters and their averaged versions which are widely used in literature. More details can be found <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/steinhardtparameters.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="kn">import</span> <span class="nn">pyscal.crystal_structures</span> <span class="k">as</span> <span class="nn">pcs</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we analyse MD configurations, first a set of perfect bcc, fcc and hcp structures and another set with thermal vibrations.</p>
+<div class="section" id="perfect-structures">
+<h2>Perfect structures<a class="headerlink" href="#perfect-structures" title="Permalink to this headline">¶</a></h2>
+<p>To create atoms and box for perfect structures, the :mod:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures</span></code> module is used. The created atoms and boxes are then assigned to <code class="docutils literal notranslate"><span class="pre">System</span></code> objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc_atoms</span><span class="p">,</span> <span class="n">bcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">bcc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">bcc</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">bcc_atoms</span>
+<span class="n">bcc</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">bcc_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span><span class="p">,</span> <span class="n">fcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">fcc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">fcc_atoms</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">fcc_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hcp_atoms</span><span class="p">,</span> <span class="n">hcp_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">hcp</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">hcp_atoms</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">hcp_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next step is calculation of nearest neighbors. There are two ways to calculate neighbors, by using a cutoff distance or by using the voronoi cells. In this example, we will use the cutoff method and provide a cutoff distance for each structure.</p>
+<div class="section" id="finding-the-cutoff-distance">
+<h3>Finding the cutoff distance<a class="headerlink" href="#finding-the-cutoff-distance" title="Permalink to this headline">¶</a></h3>
+<p>The cutoff distance is normally calculated in a such a way that the atoms within the first shell is incorporated in this distance. The :func:<code class="docutils literal notranslate"><span class="pre">pyscal.core.System.calculate_rdf</span></code> function can be used to find this cutoff distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bccrdf</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">calculate_rdf</span><span class="p">()</span>
+<span class="n">fccrdf</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">calculate_rdf</span><span class="p">()</span>
+<span class="n">hcprdf</span> <span class="o">=</span> <span class="n">hcp</span><span class="o">.</span><span class="n">calculate_rdf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the calculated rdf is plotted</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bccrdf</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bccrdf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fccrdf</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fccrdf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hcprdf</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hcprdf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;bcc&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;hcp&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f5cfc5f11d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_steinhardt_parameters_14_1.png" src="../_images/03_steinhardt_parameters_14_1.png" />
+</div>
+</div>
+<p>The selected cutoff distances are marked in red in the above plot. For bcc, since the first two shells are close to each other, for this example, we will take the cutoff in such a way that both shells are included.</p>
+</div>
+<div class="section" id="steinhardt-s-parameters-cutoff-neighbor-method">
+<h3>Steinhardt’s parameters - cutoff neighbor method<a class="headerlink" href="#steinhardt-s-parameters-cutoff-neighbor-method" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">3.6</span><span class="p">)</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">2.7</span><span class="p">)</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">3.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have used a cutoff of 3 here, but this is a parameter that has to be tuned. Using a different cutoff for each structure is possible, but it would complicate the method if the system has a mix of structures. Now we can calculate the <span class="math notranslate nohighlight">\(q_4\)</span> and <span class="math notranslate nohighlight">\(q_6\)</span> distributions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thats it! Now lets gather the results and plot them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bccq</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">fccq</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">hcpq</span> <span class="o">=</span> <span class="n">hcp</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bccq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bccq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fccq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fccq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFB300&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hcpq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hcpq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#388E3C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$q_4$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$q_6$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5cfc4edc10&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_steinhardt_parameters_22_1.png" src="../_images/03_steinhardt_parameters_22_1.png" />
+</div>
+</div>
+<p>Firstly, we can see that Steinhardt parameter values of all the atoms fall on one specific point which is due to the absence of thermal vibrations. Next, all the points are well separated and show good distinction. However, at finite temperatures, the atomic positions are affected by thermal vibrations and hence show a spread in the distribution. We will show the effect of thermal vibrations in the next example.</p>
+</div>
+</div>
+<div class="section" id="structures-with-thermal-vibrations">
+<h2>Structures with thermal vibrations<a class="headerlink" href="#structures-with-thermal-vibrations" title="Permalink to this headline">¶</a></h2>
+<p>Once again, we create the reqd structures using the :mod:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures</span></code> module. Noise can be applied to atomic positions using the <code class="docutils literal notranslate"><span class="pre">noise</span></code> keyword as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc_atoms</span><span class="p">,</span> <span class="n">bcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">bcc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">bcc</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">bcc_atoms</span>
+<span class="n">bcc</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">bcc_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span><span class="p">,</span> <span class="n">fcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">fcc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">fcc_atoms</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">fcc_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hcp_atoms</span><span class="p">,</span> <span class="n">hcp_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">3.147</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">hcp</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">hcp_atoms</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="n">hcp_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cutoff-method">
+<h3>cutoff method<a class="headerlink" href="#cutoff-method" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">3.6</span><span class="p">)</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">2.7</span><span class="p">)</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">3.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now, calculate <span class="math notranslate nohighlight">\(q_4\)</span>, <span class="math notranslate nohighlight">\(q_6\)</span> parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gather the q vales and plot them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bccq</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">fccq</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">hcpq</span> <span class="o">=</span> <span class="n">hcp</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fccq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fccq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFB300&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hcpq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hcpq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#388E3C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bccq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bccq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$q_4$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$q_6$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5cfc743a50&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_steinhardt_parameters_35_1.png" src="../_images/03_steinhardt_parameters_35_1.png" />
+</div>
+</div>
+<p>The thermal vibrations cause the distributions to spread, but it still very good. Lechner and Dellago proposed using the averaged distributions, <span class="math notranslate nohighlight">\(\bar{q}_4-\bar{q}_6\)</span> to better distinguish the distributions. Lets try that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bccaq</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fccaq</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hcpaq</span> <span class="o">=</span> <span class="n">hcp</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets see if these distributions are better..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fccaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fccaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFB300&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hcpaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hcpaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#388E3C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bccaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bccaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$q_4$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$q_6$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5cfc125650&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_steinhardt_parameters_40_1.png" src="../_images/03_steinhardt_parameters_40_1.png" />
+</div>
+</div>
+<p>This looks much better! We can see that the resolution is much better than the non averaged versions.</p>
+<p>There is also the possibility to calculate structures using Voronoi based neighbor identification too. Let’s try that now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hcp</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bccaq</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fccaq</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hcpaq</span> <span class="o">=</span> <span class="n">hcp</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the calculated points..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fccaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fccaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFB300&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hcpaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hcpaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hcp&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#388E3C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bccaq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bccaq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;bcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$q_4$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$q_6$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5cfbe5a510&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_steinhardt_parameters_47_1.png" src="../_images/03_steinhardt_parameters_47_1.png" />
+</div>
+</div>
+<p>Voronoi based method also provides good resolution,the major difference being that the location of bcc distribution is different.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./part3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sarath Menon, Grisell Díaz Leines, Jutta Rogal<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

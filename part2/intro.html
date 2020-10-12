@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Methods to calculate neighbors of a particle &#8212; pyscal</title>
+    <title>2. Methods to calculate neighbors of a particle &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -46,6 +46,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,7 +58,7 @@
     <link rel="canonical" href="https://pyscal.org/part2/intro.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Calculating coordination numbers" href="02_finding_neighbors.html" />
+    <link rel="next" title="2.4.1. Calculating coordination numbers" href="02_finding_neighbors.html" />
     <link rel="prev" title="1. Getting started with pyscal" href="../part1/01_getting_started.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,30 +110,30 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Getting started with pyscal
+  Examples
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../part1/01_getting_started.html">
    1. Getting started with pyscal
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Finding neighbors
- </span>
-</p>
-<ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. Methods to calculate neighbors of a particle
+   2. Methods to calculate neighbors of a particle
   </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_finding_neighbors.html">
+     2.4.1. Examples - finding neighbors
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_finding_neighbors.html">
-   2. Calculating coordination numbers
+  <a class="reference internal" href="../part3/steinhardt.html">
+   3. Steinhardt’s parameters
   </a>
  </li>
 </ul>
@@ -217,6 +219,47 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fixed-cutoff-method">
+   2.1. Fixed cutoff method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaptive-cutoff-methods">
+   2.2. Adaptive cutoff methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solid-angle-based-nearest-neighbor-algorithm-sann">
+     2.2.1. Solid angle based nearest neighbor algorithm (SANN)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adaptive-cutoff-method">
+     2.2.2. Adaptive cutoff method
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voronoi-tessellation">
+   2.3. Voronoi tessellation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.4. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -225,10 +268,146 @@
               <div>
                 
   <div class="section" id="methods-to-calculate-neighbors-of-a-particle">
-<h1><span class="section-number">1. </span>Methods to calculate neighbors of a particle<a class="headerlink" href="#methods-to-calculate-neighbors-of-a-particle" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Methods to calculate neighbors of a particle<a class="headerlink" href="#methods-to-calculate-neighbors-of-a-particle" title="Permalink to this headline">¶</a></h1>
 <p>pyscal includes different methods to explore the local environment of a
 particle that rely on the calculation of nearest neighbors. Various
 approaches to compute the neighbors of particles are discussed here.</p>
+<div class="section" id="fixed-cutoff-method">
+<h2><span class="section-number">2.1. </span>Fixed cutoff method<a class="headerlink" href="#fixed-cutoff-method" title="Permalink to this headline">¶</a></h2>
+<p>The most common method to calculate the nearest neighbors of an atom is
+using a cutoff radius. The neighborhood of an atom for calculation of
+Steinhardt’s parameters <a class="bibtex reference internal" href="../part3/steinhardt.html#steinhardt1983" id="id1">[1]</a> is often carried out using this method.
+Commonly, a cutoff is selected as the first minimum of the radial
+distribution functions. Once a cutoff is selected, the neighbors of an
+atom are those that fall within this selected radius. The following code
+snippet will use the cutoff method to calculate neighbors. Please check
+the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html#basic-examples">examples
+section</a>
+for basic use of the module. In this example, <code class="docutils literal notranslate"><span class="pre">conf.dump</span></code> is assumed to
+be the input configuration of the system. A cutoff radius of 3 is
+assumed for calculation of neighbors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adaptive-cutoff-methods">
+<h2><span class="section-number">2.2. </span>Adaptive cutoff methods<a class="headerlink" href="#adaptive-cutoff-methods" title="Permalink to this headline">¶</a></h2>
+<p>A fixed cutoff radius can introduce limitations to explore the local
+environment of the particle in some cases:</p>
+<ul class="simple">
+<li><p>At finite temperatures, when thermal fluctuations take place, the
+selection of a fixed cutoff may result in an inaccurate description
+of the local environment.</p></li>
+<li><p>If there is more than one structure present in the system, for
+example, bcc and fcc, the selection of cutoff such that it includes
+the first shell of both structures can be difficult.</p></li>
+</ul>
+<p>In order to achieve a more accurate description of the local
+environment, various adaptive approaches have been proposed. Two of the
+methods implemented in the module are discussed below.</p>
+<div class="section" id="solid-angle-based-nearest-neighbor-algorithm-sann">
+<h3><span class="section-number">2.2.1. </span>Solid angle based nearest neighbor algorithm (SANN)<a class="headerlink" href="#solid-angle-based-nearest-neighbor-algorithm-sann" title="Permalink to this headline">¶</a></h3>
+<p>SANN algorithm <a class="bibtex reference internal" href="#vanmeel2012" id="id2">[2]</a> determines the cutoff radius by counting the solid
+angles around an atom and equating it to <span class="math notranslate nohighlight">\(4\pi\)</span>. The algorithm solves
+the following equation iteratively.</p>
+<div class="math notranslate nohighlight">
+\[R_i^{(m)} = \frac{\sum_{j=1}^m r_{i,j}}{m-2} &lt; r_{i, m+1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the host atom, <span class="math notranslate nohighlight">\(j\)</span> are its neighbors with <span class="math notranslate nohighlight">\(r_{ij}\)</span> is the
+distance between atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. <span class="math notranslate nohighlight">\(R_i\)</span> is the cutoff radius for each
+particle <span class="math notranslate nohighlight">\(i\)</span> which is found by increasing the neighbor of neighbors <span class="math notranslate nohighlight">\(m\)</span>
+iteratively. For a description of the algorithm and more details, please
+check the reference <a class="bibtex reference internal" href="#vanmeel2012" id="id3">[2]</a>. SANN algorithm can be used to find the
+neighbors by,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;sann&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since SANN algorithm involves sorting, a sufficiently large cutoff is
+used in the beginning to reduce the number entries to be sorted. This
+parameter is calculated by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[r_{initial} = \mathrm{threshold} \times \bigg(\frac{\mathrm{Simulation~box~volume}}{\mathrm{Number~of~particles}}\bigg)^{\frac{1}{3}}\]</div>
+</div></blockquote>
+<p>a tunable <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter can be set through function arguments.</p>
+</div>
+<div class="section" id="adaptive-cutoff-method">
+<h3><span class="section-number">2.2.2. </span>Adaptive cutoff method<a class="headerlink" href="#adaptive-cutoff-method" title="Permalink to this headline">¶</a></h3>
+<p>An adaptive cutoff specific for each atom can also be found using an
+algorithm similar to adaptive common neighbor analysis <a class="bibtex reference internal" href="#stukowski2012" id="id4">[3]</a>. This
+adaptive cutoff is calculated by first making a list of all neighbor
+distances for each atom similar to SANN method. Once this list is
+available, then the cutoff is calculated from,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[r_{cut}(i) = \mathrm{padding}\times \bigg(\frac{1}{\mathrm{nlimit}} \sum_{j=1}^{\mathrm{nlimit}} r_{ij} \bigg)\]</div>
+</div></blockquote>
+<p>This method can be chosen by,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">padding</span></code> and <code class="docutils literal notranslate"><span class="pre">nlimit</span></code> parameters in the above equation can be tuned
+using the respective keywords.</p>
+<p>Either of the adaptive method can be used to find neighbors, which can
+then be used to calculate Steinhardt’s parameters or their averaged
+version.</p>
+</div>
+</div>
+<div class="section" id="voronoi-tessellation">
+<h2><span class="section-number">2.3. </span>Voronoi tessellation<a class="headerlink" href="#voronoi-tessellation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi tessellation</a>
+provides a completely parameter free geometric approach for calculation
+of neighbors. <a class="reference external" href="http://math.lbl.gov/voro++/">Voro++</a> code is used for
+Voronoi tessellation. Neighbors can be calculated using this method by,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finding neighbors using Voronoi tessellation also calculates a weight
+for each neighbor. The weight of a neighbor <span class="math notranslate nohighlight">\(j\)</span> towards a host atom <span class="math notranslate nohighlight">\(i\)</span>
+is given by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[W_{ij} = \frac{A_{ij}}{\sum_{j=1}^N A_{ij}}\]</div>
+</div></blockquote>
+<p>where <span class="math notranslate nohighlight">\(A_{ij}\)</span> is the area of Voronoi facet between atom <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>,
+<span class="math notranslate nohighlight">\(N\)</span> are all the neighbors identified through Voronoi tessellation. This
+weight can be used later for calculation of weighted Steinhardt’s
+parameters. Optionally, it is possible to choose the exponent for this
+weight. Option <code class="docutils literal notranslate"><span class="pre">voroexp</span></code> is used to set this option. For example if
+<code class="docutils literal notranslate"><span class="pre">voroexp=2</span></code>, the weight would be calculated as,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[W_{ij} = \frac{A_{ij}^2}{\sum_{j=1}^N A_{ij}^2}\]</div>
+</div></blockquote>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">2.4. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-part2/intro-0"><dl class="citation">
+<dt class="bibtex label" id="steinhardt1983"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Paul J. Steinhardt, David R. Nelson, and Marco Ronchetti. Bond-orientational order in liquids and glasses. <em>Physical Review B</em>, 28(2):784–805, 1983. ISBN: 0163-1829. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.28.784">doi:10.1103/PhysRevB.28.784</a>.</p>
+</dd>
+<dt class="bibtex label" id="vanmeel2012"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Jacobus A van Meel, Laura Filion, Chantal Valeriani, and Daan Frenkel. A parameter-free, solid-angle based, nearest- neighbor algorithm. <em>J Chem Phys</em>, 2012.</p>
+</dd>
+<dt class="bibtex label" id="stukowski2012"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Alexander Stukowski. Structure identification methods for atomistic simulations of crystalline materials. <em>Modelling and Simulation in Materials Science and Engineering</em>, 2012. <a class="reference external" href="https://doi.org/10.1088/0965-0393/20/4/045021">doi:10.1088/0965-0393/20/4/045021</a>.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -260,7 +439,7 @@ approaches to compute the neighbors of particles are discussed here.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../part1/01_getting_started.html" title="previous page"><span class="section-number">1. </span>Getting started with pyscal</a>
-    <a class='right-next' id="next-link" href="02_finding_neighbors.html" title="next page"><span class="section-number">2. </span>Calculating coordination numbers</a>
+    <a class='right-next' id="next-link" href="02_finding_neighbors.html" title="next page"><span class="section-number">2.4.1. </span>Calculating coordination numbers</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
