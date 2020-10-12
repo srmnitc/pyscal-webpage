@@ -6,6 +6,33 @@
 #######################################################################################
 # Book settings
 title                       : pyscal  # The title of the book. Will be placed in the left navbar.
-author                      : Sarath Menon  # The author of the book
+author                      : Sarath Menon, Grisell Díaz Leines, Jutta Rogal  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/srmnitc/pyscal-webpage
+  branch                    : master
+  path_to_book              : pyscal/
+  
+html:
+  use_repository_button: true
+  use_issues_button: true
+  #extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_footer              : ""  # Will be displayed underneath the footer.
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : https://pyscal.org  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+
+# Configure your Binder links, such as the URL of the BinderHub.
+launch_buttons:
+  notebook_interface        : jupyterlab
+  binderhub_url             : https://mybinder.org
+
+execute:
+  execute_notebooks         : off  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+
+latex:
+  latex_engine              : pdflatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+ 

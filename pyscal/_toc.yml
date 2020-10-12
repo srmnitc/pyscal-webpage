@@ -3,6 +3,11 @@
 - file: intro
   numbered: true
 
-- part: This is the first part
+- part: Getting started with pyscal
   chapters:
-  - file: part1/01_getting_started.md
+  - file: part1/01_getting_started.ipynb
+
+- part: Finding neighbors
+  chapters:
+  - file: part2/intro.md
+  - file: part2/02_finding_neighbors.ipynb
