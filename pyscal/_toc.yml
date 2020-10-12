@@ -53,18 +53,18 @@
     - file: part7/13_combining_energy_enthalpy.ipynb
   - file: part8/10_short_range_order.ipynb
 
-  - part: API reference
-    chapters:
-    - file: prologue/api.md
+- part: API reference
+  chapters:
+  - file: prologue/api.md
 
-  - part: News
-    chapters:
-    - file: prologue/news.md
+- part: News
+  chapters:
+  - file: prologue/news.md
 
-  - part: Credits
-    chapters:
-    - file: prologue/acknowledgements.md
+- part: Credits
+  chapters:
+  - file: prologue/acknowledgements.md
 
-  - part: License
-    chapters:
-    - file: prologue/license.md
+- part: License
+  chapters:
+  - file: prologue/license.md

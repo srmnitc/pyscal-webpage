@@ -1,6 +1,5 @@
 
-pyscal - python Structural Environment Calculator
-=================================================
+# pyscal - python Structural Environment Calculator
 
 complete documentation with examples available
 [here](https://pyscal.com/).
