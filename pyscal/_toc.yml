@@ -14,3 +14,9 @@
     sections:
     - file: part3/03_steinhardt_parameters.ipynb.ipynb
     - file: part3/03_01_steinhardts_parameters_for_lammps.ipynb
+  - file: part3/disorder.md
+    sections:
+    - file: part3/04_disorder_parameters.ipynb
+  - file: part3/solidliquid.md
+    sections:
+    - file: part3/05_distinguishing_solid_liquid.ipynb
