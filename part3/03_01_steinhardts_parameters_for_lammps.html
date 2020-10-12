@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3.1. Analyzing a lammps trajectory &#8212; pyscal</title>
+    <title>3.3.2. Analyzing a lammps trajectory &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Disorder parameter" href="disorder.html" />
-    <link rel="prev" title="3. Steinhardt’s parameters" href="steinhardt.html" />
+    <link rel="prev" title="3.3.1. Calculating bond orientational order parameters" href="03_steinhardt_parameters.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -129,9 +129,14 @@
    3. Steinhardt’s parameters
   </a>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_steinhardt_parameters.html">
+     3.3.1. Calculating bond orientational order parameters
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.3.1. Analyzing a lammps trajectory
+     3.3.2. Analyzing a lammps trajectory
     </a>
    </li>
   </ul>
@@ -168,6 +173,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../part5/voronoiparameters.html">
    9. Voronoi tessellation to identify local structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part7/entropy_parameters.html">
+   10. Entropy - Enthalpy parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part8/10_short_range_order.html">
+   11. Cowley short range order parameter
   </a>
  </li>
 </ul>
@@ -282,12 +297,12 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-a-clustering-condition">
-   3.3.1.1. Adding a clustering condition
+   3.3.2.1. Adding a clustering condition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-ase">
-   3.3.1.2. Using ASE
+   3.3.2.2. Using ASE
   </a>
  </li>
 </ul>
@@ -302,7 +317,7 @@
               <div>
                 
   <div class="section" id="analyzing-a-lammps-trajectory">
-<h1><span class="section-number">3.3.1. </span>Analyzing a lammps trajectory<a class="headerlink" href="#analyzing-a-lammps-trajectory" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.3.2. </span>Analyzing a lammps trajectory<a class="headerlink" href="#analyzing-a-lammps-trajectory" title="Permalink to this headline">¶</a></h1>
 <p>In this example, a lammps trajectory in dump-text format will be read in, and Steinhardt’s parameters will be calculated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -386,7 +401,7 @@
 </div>
 </div>
 <div class="section" id="adding-a-clustering-condition">
-<h2><span class="section-number">3.3.1.1. </span>Adding a clustering condition<a class="headerlink" href="#adding-a-clustering-condition" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3.2.1. </span>Adding a clustering condition<a class="headerlink" href="#adding-a-clustering-condition" title="Permalink to this headline">¶</a></h2>
 <p>We will now modify the above function to also find clusters which satisfy particular <span class="math notranslate nohighlight">\(q_6\)</span> value. But first, for a single file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,7 +544,7 @@
 </div>
 </div>
 <div class="section" id="using-ase">
-<h2><span class="section-number">3.3.1.2. </span>Using <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a><a class="headerlink" href="#using-ase" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3.2.2. </span>Using <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a><a class="headerlink" href="#using-ase" title="Permalink to this headline">¶</a></h2>
 <p>The above example can also done using ASE. The ASE read method needs to be imported.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,7 +629,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="steinhardt.html" title="previous page"><span class="section-number">3. </span>Steinhardt’s parameters</a>
+    <a class='left-prev' id="prev-link" href="03_steinhardt_parameters.html" title="previous page"><span class="section-number">3.3.1. </span>Calculating bond orientational order parameters</a>
     <a class='right-next' id="next-link" href="disorder.html" title="next page"><span class="section-number">4. </span>Disorder parameter</a>
 
     </div>

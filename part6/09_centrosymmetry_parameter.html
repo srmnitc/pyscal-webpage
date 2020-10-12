@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Disorder parameter &#8212; pyscal</title>
+    <title>Centrosymmetry parameter &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,21 +55,19 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pyscal.org/part3/disorder.html" />
+    <link rel="canonical" href="https://pyscal.org/part6/09_centrosymmetry_parameter.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1.1. Disorder variable" href="04_disorder_parameters.html" />
-    <link rel="prev" title="3.3.2. Analyzing a lammps trajectory" href="03_01_steinhardts_parameters_for_lammps.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://pyscal.org/part3/disorder.html" />
+<meta property="og:url"         content="https://pyscal.org/part6/09_centrosymmetry_parameter.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Disorder parameter" />
-<meta property="og:description" content="Disorder parameter  Kawasaki and Onuki [1] proposed a disorder variable based on Steinhardt’s order paramaters which can be used to distinguish between ordered " />
+<meta property="og:title"       content="Centrosymmetry parameter" />
+<meta property="og:description" content="Centrosymmetry parameter  Centrosymmetry parameter (CSP) was introduced by Kelchner et al. to identify defects in crystals. The parameter measures the loss of l" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -113,7 +111,7 @@
   Examples
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../part1/01_getting_started.html">
    1. Getting started with pyscal
@@ -125,24 +123,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="steinhardt.html">
+  <a class="reference internal" href="../part3/steinhardt.html">
    3. Steinhardt’s parameters
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/disorder.html">
    4. Disorder parameter
   </a>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_disorder_parameters.html">
-     4.1.1. Disorder variable
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="solidliquid.html">
+  <a class="reference internal" href="../part3/solidliquid.html">
    5. Classification of atoms as solid or liquid
   </a>
  </li>
@@ -222,9 +213,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/part3/disorder.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/part6/09_centrosymmetry_parameter.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -242,7 +233,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/disorder.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart6/09_centrosymmetry_parameter.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -258,24 +249,32 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/master?urlpath=lab/tree/pyscal/part6/09_centrosymmetry_parameter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/master/pyscal/part6/09_centrosymmetry_parameter.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   4.1. References
-  </a>
- </li>
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -284,52 +283,36 @@
         
               <div>
                 
-  <div class="section" id="disorder-parameter">
-<h1><span class="section-number">4. </span>Disorder parameter<a class="headerlink" href="#disorder-parameter" title="Permalink to this headline">¶</a></h1>
-<p>Kawasaki and Onuki <a class="bibtex reference internal" href="#kawasaki2011" id="id1">[1]</a> proposed a disorder variable based on
-Steinhardt’s order paramaters which can be used to distinguish between
-ordered and disordered structures</p>
-<p>The disorder variable for an atom is defined as,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[D_j = \frac{1}{n_b^j} \sum_{k \in neighbors } [S_{jj} + S_{kk} - 2S_{jk}]\]</div>
-</div></blockquote>
-<p>where S is given by,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[S_{jk} = \sum_{-l \leq m \leq l} q_{lm}^j (q_{lm}^k)^*\]</div>
-</div></blockquote>
-<p>l = 6 was used in the original publication as it is a good indicator of
-crystallinity. However, l = 4 can also be used for treating bcc
-structures. An averaged disorder parameter for each atom can also be
-calculated in pyscal,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[\bar{D}_j = \frac{1}{n_b^j} \sum_{k \in neighbors } D_j\]</div>
-</div></blockquote>
-<p>In pyscal, disorder parameter can be calculated by the following
-code-block,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+  <div class="section" id="centrosymmetry-parameter">
+<h1>Centrosymmetry parameter<a class="headerlink" href="#centrosymmetry-parameter" title="Permalink to this headline">¶</a></h1>
+<p>Centrosymmetry parameter (CSP) was introduced by <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.58.11085"><em>Kelchner et al.</em></a> to identify defects in crystals. The parameter measures the loss of local symmetry. For an atom with <span class="math notranslate nohighlight">\(N\)</span> nearest neighbors, the parameter is given by,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{CSP} = \sum_{i=1}^{N/2} \big | \textbf{r}_i + \textbf{r}_{i+N/2} \big |^2
+\]</div>
+<p><span class="math notranslate nohighlight">\(\textbf{r}_i\)</span> and <span class="math notranslate nohighlight">\(\textbf{r}_{i+N/2}\)</span> are vectors from the central atom to two opposite pairs of neighbors. There are two main methods to identify the opposite pairs of neighbors as described in <a class="reference external" href="https://arxiv.org/abs/2003.08879">this publication</a>. The first of the approaches is called <a class="reference external" href="https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045021/meta"><em>Greedy Edge Selection</em></a>(GES) and is implemented in <a class="reference external" href="https://lammps.sandia.gov/">LAMMPS</a> and <a class="reference external" href="https://www.ovito.org/">Ovito</a>. GES algorithm calculates a weight <span class="math notranslate nohighlight">\(w_{ij} = |\textbf{r}_i + \textbf{r}_j|\)</span> for all combinations of neighbors around an atom and calculates CSP over the smallest <span class="math notranslate nohighlight">\(N/2\)</span> weights.</p>
+<p>A centrosymmetry parameter calculation using GES algorithm can be carried out as follows-</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
 <span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_disorder</span><span class="p">(</span><span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_centrosymmetry</span><span class="p">(</span><span class="n">nmax</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The value of q can be replaced with whichever is required from 2-12. The
-calculated values can be accessed by,
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.disorder</span></code>{.interpreted-text role=”attr”} and
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.avg_disorder</span></code>{.interpreted-text role=”attr”}.</p>
-<div class="section" id="references">
-<h2><span class="section-number">4.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-part3/disorder-0"><dl class="citation">
-<dt class="bibtex label" id="kawasaki2011"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Takeshi Kawasaki and Akira Onuki. Construction of a disorder variable from Steinhardt order parameters in binary mixtures at high densities in three dimensions. <em>Journal of Chemical Physics</em>, 2011. <a class="reference external" href="https://doi.org/10.1063/1.3656762">doi:10.1063/1.3656762</a>.</p>
-</dd>
-</dl>
-</p>
-<div class="toctree-wrapper compound">
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nmax</span></code> parameter specifies the number of nearest neighbors to be considered for the calculation of CSP. The second algorithm is called the <a class="reference external" href="https://dl.acm.org/doi/book/10.5555/1206879">Greedy Vertex Matching</a> and is implemented in <a class="reference external" href="http://li.mit.edu/Archive/Graphics/A/">AtomEye</a> and <a class="reference external" href="https://atomsk.univ-lille.fr/">Atomsk</a>. This algorithm orders the neighbors atoms in order of increasing distance from the central atom. From this list, the closest neighbor is paired with its lowest weight partner and both atoms removed from the list. This process is continued until no more atoms are remaining in the list. CSP calculation using this algorithm can be carried out by,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_centrosymmetry</span><span class="p">(</span><span class="n">nmax</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;gvm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -343,16 +326,16 @@ calculated values can be accessed by,
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "lammps"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./part3"
+            kernelName: "lammps",
+            path: "./part6"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'lammps'</script>
 
               </div>
               
@@ -362,8 +345,6 @@ calculated values can be accessed by,
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_01_steinhardts_parameters_for_lammps.html" title="previous page"><span class="section-number">3.3.2. </span>Analyzing a lammps trajectory</a>
-    <a class='right-next' id="next-link" href="04_disorder_parameters.html" title="next page"><span class="section-number">4.1.1. </span>Disorder variable</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

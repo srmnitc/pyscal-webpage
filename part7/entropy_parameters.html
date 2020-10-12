@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Disorder parameter &#8212; pyscal</title>
+    <title>10. Entropy - Enthalpy parameters &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,21 +55,21 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pyscal.org/part3/disorder.html" />
+    <link rel="canonical" href="https://pyscal.org/part7/entropy_parameters.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1.1. Disorder variable" href="04_disorder_parameters.html" />
-    <link rel="prev" title="3.3.2. Analyzing a lammps trajectory" href="03_01_steinhardts_parameters_for_lammps.html" />
+    <link rel="next" title="10.2.1. Entropy parameters" href="11_entropy_parameter.html" />
+    <link rel="prev" title="9.1.1. Voronoi parameters" href="../part5/06_voronoi_tessellation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://pyscal.org/part3/disorder.html" />
+<meta property="og:url"         content="https://pyscal.org/part7/entropy_parameters.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Disorder parameter" />
-<meta property="og:description" content="Disorder parameter  Kawasaki and Onuki [1] proposed a disorder variable based on Steinhardt’s order paramaters which can be used to distinguish between ordered " />
+<meta property="og:title"       content="Entropy - Enthalpy parameters" />
+<meta property="og:description" content="Entropy - Enthalpy parameters  Entropy fingerprint  The entropy parameter was introduced by Piaggi et al [1] for identification of defects and distinction betwe" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -125,24 +125,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="steinhardt.html">
+  <a class="reference internal" href="../part3/steinhardt.html">
    3. Steinhardt’s parameters
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/disorder.html">
    4. Disorder parameter
   </a>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_disorder_parameters.html">
-     4.1.1. Disorder variable
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="solidliquid.html">
+  <a class="reference internal" href="../part3/solidliquid.html">
    5. Classification of atoms as solid or liquid
   </a>
  </li>
@@ -170,10 +163,22 @@
    9. Voronoi tessellation to identify local structures
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part7/entropy_parameters.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    10. Entropy - Enthalpy parameters
   </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_entropy_parameter.html">
+     10.2.1. Entropy parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_calculating_energy.html">
+     10.2.2. Calculating energy
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part8/10_short_range_order.html">
@@ -222,7 +227,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/part3/disorder.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/part7/entropy_parameters.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -242,7 +247,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/disorder.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart7/entropy_parameters.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -269,8 +274,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy-fingerprint">
+   10.1. Entropy fingerprint
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.1. References
+   10.2. References
   </a>
  </li>
 </ul>
@@ -284,48 +294,79 @@
         
               <div>
                 
-  <div class="section" id="disorder-parameter">
-<h1><span class="section-number">4. </span>Disorder parameter<a class="headerlink" href="#disorder-parameter" title="Permalink to this headline">¶</a></h1>
-<p>Kawasaki and Onuki <a class="bibtex reference internal" href="#kawasaki2011" id="id1">[1]</a> proposed a disorder variable based on
-Steinhardt’s order paramaters which can be used to distinguish between
-ordered and disordered structures</p>
-<p>The disorder variable for an atom is defined as,</p>
+  <div class="section" id="entropy-enthalpy-parameters">
+<h1><span class="section-number">10. </span>Entropy - Enthalpy parameters<a class="headerlink" href="#entropy-enthalpy-parameters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="entropy-fingerprint">
+<h2><span class="section-number">10.1. </span>Entropy fingerprint<a class="headerlink" href="#entropy-fingerprint" title="Permalink to this headline">¶</a></h2>
+<p>The entropy parameter was introduced by Piaggi et
+al <a class="bibtex reference internal" href="#piaggi2017" id="id1">[1]</a> for identification of defects and
+distinction between solid and liquid. The entropy paramater <span class="math notranslate nohighlight">\(s_s^i\)</span> is
+defined as,</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
-\[D_j = \frac{1}{n_b^j} \sum_{k \in neighbors } [S_{jj} + S_{kk} - 2S_{jk}]\]</div>
+\[s_s^i = -2\pi\rho k_B \int_0^{r_m} [g_m^i(r)\ln g_m^i(r) - g_m^i(r) + 1] r^2 dr\]</div>
 </div></blockquote>
-<p>where S is given by,</p>
+<p>where <span class="math notranslate nohighlight">\(r_m\)</span> is the upper bound of integration and <span class="math notranslate nohighlight">\(g_m^i\)</span> is radial
+distribution function centered on atom <span class="math notranslate nohighlight">\(i\)</span>,</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
-\[S_{jk} = \sum_{-l \leq m \leq l} q_{lm}^j (q_{lm}^k)^*\]</div>
+\[g_m^i(r) = \frac{1}{4\pi\rho r^2} \sum_j \frac{1}{\sqrt{2\pi\sigma^2}} \exp{-(r-r_{ij})^2/(2\sigma^2)}\]</div>
 </div></blockquote>
-<p>l = 6 was used in the original publication as it is a good indicator of
-crystallinity. However, l = 4 can also be used for treating bcc
-structures. An averaged disorder parameter for each atom can also be
-calculated in pyscal,</p>
+<p><span class="math notranslate nohighlight">\(r_{ij}\)</span> is the interatomic distance between atom <span class="math notranslate nohighlight">\(i\)</span> and its neighbors
+<span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> is a broadening parameter.</p>
+<p>The averaged version of entropy parameters <span class="math notranslate nohighlight">\(\bar{s}_s^i\)</span> can be
+calculated in two ways, either using a simple averaging over the
+neighbors given by,</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
-\[\bar{D}_j = \frac{1}{n_b^j} \sum_{k \in neighbors } D_j\]</div>
+\[\bar{s}_s^i = \frac{\sum_j s_s^j + s_s^i}{N + 1}\]</div>
 </div></blockquote>
-<p>In pyscal, disorder parameter can be calculated by the following
-code-block,</p>
+<p>or using a switching function as described below,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\bar{s}_s^i = \frac{\sum_j s_s^i f(r_{ij}) + s_s^i}{\sum_j f(r_{ij}) + 1}\]</div>
+</div></blockquote>
+<p><span class="math notranslate nohighlight">\(f(r_{ij})\)</span> is a switching parameter which depends on <span class="math notranslate nohighlight">\(r_a\)</span> which is the
+cutoff distance. The switching function shows a value of 1 for
+<span class="math notranslate nohighlight">\(r_{ij} &lt;&lt; r_a\)</span> and 0 for <span class="math notranslate nohighlight">\(r_{ij} &gt;&gt; r_a\)</span>. The switching function is
+given by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[f(r_{ij}) = \frac{1-(r_{ij}/r_a)^N}{1-(r_{ij}/r_a)^M}\]</div>
+</div></blockquote>
+<p>Entropy parameters can be calculated in pyscal using the following code,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
 <span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_disorder</span><span class="p">(</span><span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;cutoff&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lattice_constant</span><span class="o">=</span><span class="mf">4.00</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_entropy</span><span class="p">(</span><span class="mf">1.4</span><span class="o">*</span><span class="n">lattice_constant</span><span class="p">,</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">atoms</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">atoms</span>
+<span class="n">entropy</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">entropy</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">]</span>
+<span class="n">average_entropy</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">avg_entropy</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The value of q can be replaced with whichever is required from 2-12. The
-calculated values can be accessed by,
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.disorder</span></code>{.interpreted-text role=”attr”} and
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.avg_disorder</span></code>{.interpreted-text role=”attr”}.</p>
+<p>The value of <span class="math notranslate nohighlight">\(r_m\)</span> is provided in units of lattice constant. Further
+parameters shown above, such as <span class="math notranslate nohighlight">\(\sigma\)</span> can be specified using the
+various keyword arguments. The above code does a simple averaging over
+neighbors. The switching function can be used by,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">calculate_entropy</span><span class="p">(</span><span class="mf">1.4</span><span class="o">*</span><span class="n">lattice_constant</span><span class="p">,</span> <span class="n">ra</span><span class="o">=</span><span class="mf">0.9</span><span class="o">*</span><span class="n">lattice_constant</span><span class="p">,</span> <span class="n">switching_function</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In pyscal, a slightly different version of <span class="math notranslate nohighlight">\(s_s^i\)</span> is calculated. This
+is given by,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[s_s^i = -\rho \int_0^{r_m} [g_m^i(r)\ln g_m^i(r) - g_m^i(r) + 1] r^2 dr\]</div>
+</div></blockquote>
+<p>The prefactor <span class="math notranslate nohighlight">\(2\pi k_B\)</span> is dropped in the entropy values calculated in
+pyscal.</p>
+</div>
 <div class="section" id="references">
-<h2><span class="section-number">4.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-part3/disorder-0"><dl class="citation">
-<dt class="bibtex label" id="kawasaki2011"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Takeshi Kawasaki and Akira Onuki. Construction of a disorder variable from Steinhardt order parameters in binary mixtures at high densities in three dimensions. <em>Journal of Chemical Physics</em>, 2011. <a class="reference external" href="https://doi.org/10.1063/1.3656762">doi:10.1063/1.3656762</a>.</p>
+<h2><span class="section-number">10.2. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-part7/entropy_parameters-0"><dl class="citation">
+<dt class="bibtex label" id="piaggi2017"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Pablo M. Piaggi and Michele Parrinello. Entropy based fingerprint for local crystalline order. <em>Journal of Chemical Physics</em>, 2017. <a class="reference external" href="https://doi.org/10.1063/1.4998408">doi:10.1063/1.4998408</a>.</p>
 </dd>
 </dl>
 </p>
@@ -347,7 +388,7 @@ calculated values can be accessed by,
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./part3"
+            path: "./part7"
         },
         predefinedOutput: true
     }
@@ -362,8 +403,8 @@ calculated values can be accessed by,
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_01_steinhardts_parameters_for_lammps.html" title="previous page"><span class="section-number">3.3.2. </span>Analyzing a lammps trajectory</a>
-    <a class='right-next' id="next-link" href="04_disorder_parameters.html" title="next page"><span class="section-number">4.1.1. </span>Disorder variable</a>
+    <a class='left-prev' id="prev-link" href="../part5/06_voronoi_tessellation.html" title="previous page"><span class="section-number">9.1.1. </span>Voronoi parameters</a>
+    <a class='right-next' id="next-link" href="11_entropy_parameter.html" title="next page"><span class="section-number">10.2.1. </span>Entropy parameters</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

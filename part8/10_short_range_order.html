@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Disorder parameter &#8212; pyscal</title>
+    <title>11. Cowley short range order parameter &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,21 +55,20 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pyscal.org/part3/disorder.html" />
+    <link rel="canonical" href="https://pyscal.org/part8/10_short_range_order.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1.1. Disorder variable" href="04_disorder_parameters.html" />
-    <link rel="prev" title="3.3.2. Analyzing a lammps trajectory" href="03_01_steinhardts_parameters_for_lammps.html" />
+    <link rel="prev" title="10.2.2. Calculating energy" href="../part7/12_calculating_energy.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://pyscal.org/part3/disorder.html" />
+<meta property="og:url"         content="https://pyscal.org/part8/10_short_range_order.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Disorder parameter" />
-<meta property="og:description" content="Disorder parameter  Kawasaki and Onuki [1] proposed a disorder variable based on Steinhardt’s order paramaters which can be used to distinguish between ordered " />
+<meta property="og:title"       content="Cowley short range order parameter" />
+<meta property="og:description" content="Cowley short range order parameter  The Cowley short range order parameter can be used to find if an alloy is ordered or not. The order parameter is given by,  " />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -125,24 +124,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="steinhardt.html">
+  <a class="reference internal" href="../part3/steinhardt.html">
    3. Steinhardt’s parameters
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part3/disorder.html">
    4. Disorder parameter
   </a>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_disorder_parameters.html">
-     4.1.1. Disorder variable
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="solidliquid.html">
+  <a class="reference internal" href="../part3/solidliquid.html">
    5. Classification of atoms as solid or liquid
   </a>
  </li>
@@ -175,8 +167,8 @@
    10. Entropy - Enthalpy parameters
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part8/10_short_range_order.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    11. Cowley short range order parameter
   </a>
  </li>
@@ -222,9 +214,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/part3/disorder.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/part8/10_short_range_order.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -242,7 +234,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/disorder.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart8/10_short_range_order.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -258,24 +250,32 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/master?urlpath=lab/tree/pyscal/part8/10_short_range_order.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/srmnitc/pyscal-webpage/blob/master/pyscal/part8/10_short_range_order.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   4.1. References
-  </a>
- </li>
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -284,54 +284,99 @@
         
               <div>
                 
-  <div class="section" id="disorder-parameter">
-<h1><span class="section-number">4. </span>Disorder parameter<a class="headerlink" href="#disorder-parameter" title="Permalink to this headline">¶</a></h1>
-<p>Kawasaki and Onuki <a class="bibtex reference internal" href="#kawasaki2011" id="id1">[1]</a> proposed a disorder variable based on
-Steinhardt’s order paramaters which can be used to distinguish between
-ordered and disordered structures</p>
-<p>The disorder variable for an atom is defined as,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[D_j = \frac{1}{n_b^j} \sum_{k \in neighbors } [S_{jj} + S_{kk} - 2S_{jk}]\]</div>
-</div></blockquote>
-<p>where S is given by,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[S_{jk} = \sum_{-l \leq m \leq l} q_{lm}^j (q_{lm}^k)^*\]</div>
-</div></blockquote>
-<p>l = 6 was used in the original publication as it is a good indicator of
-crystallinity. However, l = 4 can also be used for treating bcc
-structures. An averaged disorder parameter for each atom can also be
-calculated in pyscal,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[\bar{D}_j = \frac{1}{n_b^j} \sum_{k \in neighbors } D_j\]</div>
-</div></blockquote>
-<p>In pyscal, disorder parameter can be calculated by the following
-code-block,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
-<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_disorder</span><span class="p">(</span><span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+  <div class="section" id="cowley-short-range-order-parameter">
+<h1><span class="section-number">11. </span>Cowley short range order parameter<a class="headerlink" href="#cowley-short-range-order-parameter" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://doi.org/10.1103/PhysRev.77.669">Cowley short range order parameter</a> can be used to find if an alloy is ordered or not. The order parameter is given by,</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_i = 1 - \frac{n_i}{m_A c_i}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_i\)</span> is the number of atoms of the non reference type among the <span class="math notranslate nohighlight">\(c_i\)</span> atoms
+in the <span class="math notranslate nohighlight">\(i\)</span>th shell. <span class="math notranslate nohighlight">\(m_A\)</span> is the concentration of the non reference atom.</p>
+<p>We can start by importing the necessary modules</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="kn">import</span> <span class="nn">pyscal.crystal_structures</span> <span class="k">as</span> <span class="nn">pcs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
-<p>The value of q can be replaced with whichever is required from 2-12. The
-calculated values can be accessed by,
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.disorder</span></code>{.interpreted-text role=”attr”} and
-<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.avg_disorder</span></code>{.interpreted-text role=”attr”}.</p>
-<div class="section" id="references">
-<h2><span class="section-number">4.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-part3/disorder-0"><dl class="citation">
-<dt class="bibtex label" id="kawasaki2011"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Takeshi Kawasaki and Akira Onuki. Construction of a disorder variable from Steinhardt order parameters in binary mixtures at high densities in three dimensions. <em>Journal of Chemical Physics</em>, 2011. <a class="reference external" href="https://doi.org/10.1063/1.3656762">doi:10.1063/1.3656762</a>.</p>
-</dd>
-</dl>
-</p>
-<div class="toctree-wrapper compound">
 </div>
 </div>
+<p>We need a binary alloy structure to calculate the order parameter. We will use the crystal structures modules to do this. Here, we will create a L12 structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;l12&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mf">4.00</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to use the order parameter, we need to have two shells of neighbors around the atom. In order to get two shells of neighbors, we will first estimate a cutoff using the radial distribution function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">calculate_rdf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the rdf,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;distance $\AA$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$g(r)$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$g(r)$&#39;)
+</pre></div>
+</div>
+<img alt="../_images/10_short_range_order_8_1.png" src="../_images/10_short_range_order_8_1.png" />
+</div>
+</div>
+<p>In this case, a cutoff of about 4.5 will make sure that two shells are included. Now the neighbors are calculated using this cutoff.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">4.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally we can calculate the short range order. We will use the reference type as 1 and also specify the average keyword as True. This will allow us to get an average value for the whole simulation box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">calculate_sro</span><span class="p">(</span><span class="n">reference_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.33333333,  1.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Value for individual atoms can be accessed by,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">atoms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">sro</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.33333333333333326, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Only atoms of the non reference type will have this value!</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -343,16 +388,16 @@ calculated values can be accessed by,
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "lammps"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./part3"
+            kernelName: "lammps",
+            path: "./part8"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'lammps'</script>
 
               </div>
               
@@ -362,8 +407,7 @@ calculated values can be accessed by,
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_01_steinhardts_parameters_for_lammps.html" title="previous page"><span class="section-number">3.3.2. </span>Analyzing a lammps trajectory</a>
-    <a class='right-next' id="next-link" href="04_disorder_parameters.html" title="next page"><span class="section-number">4.1.1. </span>Disorder variable</a>
+    <a class='left-prev' id="prev-link" href="../part7/12_calculating_energy.html" title="previous page"><span class="section-number">10.2.2. </span>Calculating energy</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
