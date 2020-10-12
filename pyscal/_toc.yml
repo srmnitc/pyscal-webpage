@@ -20,3 +20,7 @@
   - file: part3/solidliquid.md
     sections:
     - file: part3/05_distinguishing_solid_liquid.ipynb
+  - file: part4/angular.md
+    sections:
+    - file: part4/07_angular_parameters.ipynb
+    - file: part4/08_chi_params.ipynb
