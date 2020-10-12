@@ -5,6 +5,4 @@
 
 - part: This is the first part
   chapters:
-  - file: part1/01_sec1
-  - file: part1/02_sec2
-  - file: part1/03_sec3
+  - file: part1/01_getting_started.md
