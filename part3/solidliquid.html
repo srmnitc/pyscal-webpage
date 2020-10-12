@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Files &#8212; pyscal</title>
+    <title>5. Classification of atoms as solid or liquid &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,19 +55,21 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pyscal.org/part1/markdown.html" />
+    <link rel="canonical" href="https://pyscal.org/part3/solidliquid.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.1.1. Distinction of solid liquid atoms and clustering" href="05_distinguishing_solid_liquid.html" />
+    <link rel="prev" title="4.1.1. Disorder variable" href="04_disorder_parameters.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://pyscal.org/part1/markdown.html" />
+<meta property="og:url"         content="https://pyscal.org/part3/solidliquid.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Markdown Files" />
-<meta property="og:description" content="Markdown Files  Whether you write your book’s content in Jupyter Notebooks (.ipynb) or in regular markdown files (.md), you’ll write in the same flavor of markd" />
+<meta property="og:title"       content="Classification of atoms as solid or liquid" />
+<meta property="og:description" content="Classification of atoms as solid or liquid  pyscal can also be used to distinguish solid and liquid atoms. The classification is based on Steinhardt’s parameter" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -111,9 +113,9 @@
   Examples
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="01_getting_started.html">
+  <a class="reference internal" href="../part1/01_getting_started.html">
    1. Getting started with pyscal
   </a>
  </li>
@@ -123,19 +125,31 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../part3/steinhardt.html">
+  <a class="reference internal" href="steinhardt.html">
    3. Steinhardt’s parameters
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../part3/disorder.html">
+  <a class="reference internal" href="disorder.html">
    4. Disorder parameter
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part3/solidliquid.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    5. Classification of atoms as solid or liquid
   </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_distinguishing_solid_liquid.html">
+     5.1.1. Distinction of solid liquid atoms and clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_distinguishing_solid_liquid.html#clustering-based-on-a-custom-property">
+     5.1.2. Clustering based on a custom property
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part4/angular.html">
@@ -203,7 +217,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/part1/markdown.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/part3/solidliquid.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -223,7 +237,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart1/markdown.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart3/solidliquid.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -250,36 +264,9 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-myst">
-   What is MyST?
+  <a class="reference internal nav-link" href="#references">
+   5.1. References
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-roles-and-directives">
-   What are roles and directives?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-a-directive">
-     Using a directive
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-a-role">
-     Using a role
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-a-citation">
-     Adding a citation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#executing-code-in-your-markdown-files">
-     Executing code in your markdown files
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -292,106 +279,67 @@
         
               <div>
                 
-  <div class="section" id="markdown-files">
-<h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Permalink to this headline">¶</a></h1>
-<p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
-in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
-called <strong>MyST Markdown</strong>.</p>
-<div class="section" id="what-is-myst">
-<h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Permalink to this headline">¶</a></h2>
-<p>MyST stands for “Markedly Structured Text”. It
-is a slight variation on a flavor of markdown called “CommonMark” markdown,
-with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
-in the Sphinx ecosystem.</p>
-</div>
-<div class="section" id="what-are-roles-and-directives">
-<h2>What are roles and directives?<a class="headerlink" href="#what-are-roles-and-directives" title="Permalink to this headline">¶</a></h2>
-<p>Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but <strong>roles are written in one line</strong>, whereas
-<strong>directives span many lines</strong>. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.</p>
-<div class="section" id="using-a-directive">
-<h3>Using a directive<a class="headerlink" href="#using-a-directive" title="Permalink to this headline">¶</a></h3>
-<p>At its simplest, you can insert a directive into your book’s content like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{mydirectivename}
-My directive content
-```
+  <div class="section" id="classification-of-atoms-as-solid-or-liquid">
+<h1><span class="section-number">5. </span>Classification of atoms as solid or liquid<a class="headerlink" href="#classification-of-atoms-as-solid-or-liquid" title="Permalink to this headline">¶</a></h1>
+<p>pyscal can also be used to distinguish solid and liquid atoms. The
+classification is based on <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/steinhardtparameters.html">Steinhardt’s
+parameters</a>,
+specifically <span class="math notranslate nohighlight">\(q_6\)</span>. The method defines two neighboring atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>
+as having solid bonds if a parameter <span class="math notranslate nohighlight">\(s_{ij}\)</span> <a class="bibtex reference internal" href="#auer2005" id="id1">[1]</a>,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[s_{ij} = \sum_{m=-6}^6 q_{6m}(i) q_{6m}^*(j) \geq \mathrm{threshold}\]</div>
+</div></blockquote>
+<p>Additionally, a second order parameter is used to improve the
+distinction in solid-liquid boundaries <a class="bibtex reference internal" href="#bokeloh2014" id="id2">[2]</a>. This is defined by the
+criteria,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\langle s_{ij} \rangle &gt; \mathrm{avgthreshold}\]</div>
+</div></blockquote>
+<p>If a particle has <span class="math notranslate nohighlight">\(n\)</span> number of bonds with
+<span class="math notranslate nohighlight">\(s_{ij} \geq \mathrm{threshold}\)</span> and the above condition is also
+satisfied, it is considered as a solid. The solid atoms can be clustered
+to find the largest solid cluster of atoms. Please check the
+<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html">examples</a> on how
+to do this.</p>
+<p>Finding solid atoms in liquid start with reading in a file and
+calculation of neighbors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This will only work if a directive with name <code class="docutils literal notranslate"><span class="pre">mydirectivename</span></code> already exists
-(which it doesn’t). There are many pre-defined directives associated with
-Jupyter Book. For example, to insert a note box into your content, you can
-use the following directive:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
-Here is a note
-```
+<p>Once again, there are various methods for finding neighbors. Please
+check
+<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">here</a>
+for details on neighbor calculation methods. Once the neighbors are
+calculated, solid atoms can be found directly by,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_solids</span><span class="p">(</span><span class="n">bonds</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">avgthreshold</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This results in:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note</p>
-</div>
-<p>In your built book.</p>
-<p>For more information on writing directives, see the
-<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
-</div>
-<div class="section" id="using-a-role">
-<h3>Using a role<a class="headerlink" href="#using-a-role" title="Permalink to this headline">¶</a></h3>
-<p>Roles are very similar to directives, but they are less-complex and written
-entirely on one line. You can insert a role into your book’s content with
-this pattern:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Some content {rolename}`and here is my role&#39;s content!`
+<p><code class="docutils literal notranslate"><span class="pre">bonds</span></code> set the number of minimum bonds a particle should have (as
+defined above), <code class="docutils literal notranslate"><span class="pre">threshold</span></code> and <code class="docutils literal notranslate"><span class="pre">avgthreshold</span></code> are the same quantities
+that appear in the equations above. Setting the keyword <code class="docutils literal notranslate"><span class="pre">cluster</span></code> to
+True returns the size of the largest solid cluster. It is also possible
+to check if each atom is solid or not.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">atom</span>
+<span class="n">solids</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">solid</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Again, roles will only work if <code class="docutils literal notranslate"><span class="pre">rolename</span></code> is a valid role’s name. For example,
-the <code class="docutils literal notranslate"><span class="pre">doc</span></code> role can be used to refer to another page in your book. You can
-refer directly to another page by its relative path. For example, the
-role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <span class="xref std std-doc">intro</span>.</p>
-<p>For more information on writing roles, see the
-<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
-</div>
-<div class="section" id="adding-a-citation">
-<h3>Adding a citation<a class="headerlink" href="#adding-a-citation" title="Permalink to this headline">¶</a></h3>
-<p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
-the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
-this: <span class="bibtex" id="id1">[holdgraf_evidence_2014]</span>.</p>
-<p>Moreover, you can insert a bibliography into your page with this syntax.
-The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
-render properly.
-For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
-then the bibliography is inserted with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography} references.bib
-```
-</pre></div>
-</div>
-<p>Resulting in a rendered bibliography that looks like:</p>
-<p id="bibtex-bibliography-part1/markdown-0"></p>
-</div>
-<div class="section" id="executing-code-in-your-markdown-files">
-<h3>Executing code in your markdown files<a class="headerlink" href="#executing-code-in-your-markdown-files" title="Permalink to this headline">¶</a></h3>
-<p>If you’d like to include computational content inside these markdown files,
-you can use MyST Markdown to define cells that will be executed when your
-book is built. Jupyter Book uses <em>jupytext</em> to do this.</p>
-<p>First, add Jupytext metadata to the file. For example, to add Jupytext metadata
-to this markdown page, run this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">markdown</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-</div>
-<p>Once a markdown file has Jupytext metadata in it, you can add the following
-directive to run the code at build time:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{code-cell}
-print(&quot;Here is some code to execute&quot;)
-```
-</pre></div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<p>For more information about executing computational content with Jupyter Book,
-see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyST-NB documentation</a>.</p>
+<div class="section" id="references">
+<h2><span class="section-number">5.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-part3/solidliquid-0"><dl class="citation">
+<dt class="bibtex label" id="auer2005"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>S. Auer and D. Frenkel. <em>Numerical Simulation of Crystal Nucleation in Colloids</em>. Volume 173. Springer Berlin Heidelberg, 2005. <a class="reference external" href="https://doi.org/10.1007/b99429">doi:10.1007/b99429</a>.</p>
+</dd>
+<dt class="bibtex label" id="bokeloh2014"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>J. Bokeloh, G. Wilde, R. E. Rozas, R. Benjamin, and J. Horbach. Nucleation barriers for the liquid-to-crystal transition in simple metals: Experiment vs. simulation. <em>European Physical Journal: Special Topics</em>, 223(3):511–526, 2014. <a class="reference external" href="https://doi.org/10.1140/epjst/e2014-02106-2">doi:10.1140/epjst/e2014-02106-2</a>.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>
@@ -409,7 +357,7 @@ see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyS
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./part1"
+            path: "./part3"
         },
         predefinedOutput: true
     }
@@ -424,6 +372,8 @@ see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyS
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="04_disorder_parameters.html" title="previous page"><span class="section-number">4.1.1. </span>Disorder variable</a>
+    <a class='right-next' id="next-link" href="05_distinguishing_solid_liquid.html" title="next page"><span class="section-number">5.1.1. </span>Distinction of solid liquid atoms and clustering</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
