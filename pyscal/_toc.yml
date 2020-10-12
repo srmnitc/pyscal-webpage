@@ -24,3 +24,6 @@
     sections:
     - file: part4/07_angular_parameters.ipynb
     - file: part4/08_chi_params.ipynb
+  - file: part5/voronoiparameters.md
+    sections:
+    - file: part5/06_voronoi_tessellation.ipynb
