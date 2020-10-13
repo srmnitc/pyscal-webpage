@@ -383,10 +383,7 @@ Steinhardt’s parameters <a class="bibtex reference internal" href="../part3/st
 Commonly, a cutoff is selected as the first minimum of the radial
 distribution functions. Once a cutoff is selected, the neighbors of an
 atom are those that fall within this selected radius. The following code
-snippet will use the cutoff method to calculate neighbors. Please check
-the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html#basic-examples">examples
-section</a>
-for basic use of the module. In this example, <code class="docutils literal notranslate"><span class="pre">conf.dump</span></code> is assumed to
+snippet will use the cutoff method to calculate neighbors. In this example, <code class="docutils literal notranslate"><span class="pre">conf.dump</span></code> is assumed to
 be the input configuration of the system. A cutoff radius of 3 is
 assumed for calculation of neighbors.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
@@ -416,8 +413,10 @@ methods implemented in the module are discussed below.</p>
 <p>SANN algorithm <a class="bibtex reference internal" href="#vanmeel2012" id="id2">[2]</a> determines the cutoff radius by counting the solid
 angles around an atom and equating it to <span class="math notranslate nohighlight">\(4\pi\)</span>. The algorithm solves
 the following equation iteratively.</p>
-<div class="math notranslate nohighlight">
+<blockquote>
+<div><div class="math notranslate nohighlight">
 \[R_i^{(m)} = \frac{\sum_{j=1}^m r_{i,j}}{m-2} &lt; r_{i, m+1}\]</div>
+</div></blockquote>
 <p>where <span class="math notranslate nohighlight">\(i\)</span> is the host atom, <span class="math notranslate nohighlight">\(j\)</span> are its neighbors with <span class="math notranslate nohighlight">\(r_{ij}\)</span> is the
 distance between atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. <span class="math notranslate nohighlight">\(R_i\)</span> is the cutoff radius for each
 particle <span class="math notranslate nohighlight">\(i\)</span> which is found by increasing the neighbor of neighbors <span class="math notranslate nohighlight">\(m\)</span>

@@ -386,8 +386,8 @@ particles <span class="math notranslate nohighlight">\(i\)</span> and <span clas
 identification of solidity, and <span class="math notranslate nohighlight">\(q_4\)</span> and <span class="math notranslate nohighlight">\(q_6\)</span> for distinction of
 crystal structures <a class="bibtex reference internal" href="#mickel2013" id="id3">[2]</a>. Commonly this method uses a cutoff radius to
 identify the neighbors of an atom. The cutoff can be chosen based on
-<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">different methods
-available</a>.
+<a class="reference internal" href="../part2/intro.html"><span class="doc std std-doc">different methods
+available</span></a>.
 Once the cutoff is chosen and neighbors are calculated, the calculation
 of Steinhardt’s parameters is straightforward.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
@@ -433,7 +433,7 @@ given by,</p>
 <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is the sum of the face areas of atom <span class="math notranslate nohighlight">\(i\)</span>. In pyscal, the
 area weights are already assigned during the neighbor calculation phase
 when the Voronoi method is used to calculate neighbors in the
-<code class="docutils literal notranslate"><span class="pre">~pyscal.core.System.find_neighbors</span></code>{.interpreted-text role=”func”}. The
+<a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.find_neighbors">System.find_neighbors</a>. The
 Voronoi weighted Steinhardt’s parameters can be calculated as follows,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>

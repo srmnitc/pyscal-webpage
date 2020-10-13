@@ -369,9 +369,7 @@ criteria,</p>
 <p>If a particle has <span class="math notranslate nohighlight">\(n\)</span> number of bonds with
 <span class="math notranslate nohighlight">\(s_{ij} \geq \mathrm{threshold}\)</span> and the above condition is also
 satisfied, it is considered as a solid. The solid atoms can be clustered
-to find the largest solid cluster of atoms. Please check the
-<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html">examples</a> on how
-to do this.</p>
+to find the largest solid cluster of atoms.</p>
 <p>Finding solid atoms in liquid start with reading in a file and
 calculation of neighbors.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
@@ -382,7 +380,7 @@ calculation of neighbors.</p>
 </div>
 <p>Once again, there are various methods for finding neighbors. Please
 check
-<a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">here</a>
+<a class="reference internal" href="../part2/intro.html"><span class="doc std std-doc">here</span></a>
 for details on neighbor calculation methods. Once the neighbors are
 calculated, solid atoms can be found directly by,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_solids</span><span class="p">(</span><span class="n">bonds</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">avgthreshold</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
