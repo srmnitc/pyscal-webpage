@@ -21,16 +21,15 @@ sys.calculate_vorovector()
 ```
 
 The vector for each atom can be accessed using
-`~pyscal.catom.Atom.vorovector`{.interpreted-text role="attr"}.
+[Atom.vorovector](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.vorovector).
 Furthermore, the associated Voronoi volume of the polyhedron, which may
 be indicative of the local structure, is also automatically calculated
 when finding neighbors using
-`~pyscal.core.System.find_neighbors`{.interpreted-text role="func"}.
+[System.find_neighbors](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.find_neighbors).
 This value for each atom can be accessed by
-`~pyscal.catom.Atom.volume`{.interpreted-text role="attr"}. An averaged
+[Atom.volume](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.volume). An averaged
 version of the volume, which is averaged over the neighbors of an atom
-can be accessed using `~pyscal.catom.Atom.avg_volume`{.interpreted-text
-role="attr"}.
+can be accessed using [Atom.avg_volume](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.avg_volume).
 
 
 ## References

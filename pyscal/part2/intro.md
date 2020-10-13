@@ -12,10 +12,7 @@ Steinhardt\'s parameters {cite}`Steinhardt1983` is often carried out using this 
 Commonly, a cutoff is selected as the first minimum of the radial
 distribution functions. Once a cutoff is selected, the neighbors of an
 atom are those that fall within this selected radius. The following code
-snippet will use the cutoff method to calculate neighbors. Please check
-the [examples
-section](https://pyscal.readthedocs.io/en/latest/examples.html#basic-examples)
-for basic use of the module. In this example, `conf.dump` is assumed to
+snippet will use the cutoff method to calculate neighbors. In this example, `conf.dump` is assumed to
 be the input configuration of the system. A cutoff radius of 3 is
 assumed for calculation of neighbors.
 
@@ -49,7 +46,7 @@ SANN algorithm {cite}`VanMeel2012` determines the cutoff radius by counting the 
 angles around an atom and equating it to $4\pi$. The algorithm solves
 the following equation iteratively.
 
-$$R_i^{(m)} = \frac{\sum_{j=1}^m r_{i,j}}{m-2} < r_{i, m+1}$$
+> $$R_i^{(m)} = \frac{\sum_{j=1}^m r_{i,j}}{m-2} < r_{i, m+1}$$
 
 where $i$ is the host atom, $j$ are its neighbors with $r_{ij}$ is the
 distance between atoms $i$ and $j$. $R_i$ is the cutoff radius for each

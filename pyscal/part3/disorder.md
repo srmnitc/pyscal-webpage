@@ -32,9 +32,7 @@ sys.calculate_disorder(averaged=True, q=6)
 ```
 
 The value of q can be replaced with whichever is required from 2-12. The
-calculated values can be accessed by,
-`~pyscal.catom.Atom.disorder`{.interpreted-text role="attr"} and
-`~pyscal.catom.Atom.avg_disorder`{.interpreted-text role="attr"}.
+calculated values can be accessed by, [Atom.disorder](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.disorder) and [Atom.avg_disorder](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.avg_disorder) attributes.
 
 ## References
 

@@ -26,7 +26,7 @@ identification of solidity, and $q_4$ and $q_6$ for distinction of
 crystal structures {cite}`Mickel2013`. Commonly this method uses a cutoff radius to
 identify the neighbors of an atom. The cutoff can be chosen based on
 [different methods
-available](https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html).
+available](../part2/intro.md).
 Once the cutoff is chosen and neighbors are calculated, the calculation
 of Steinhardt\'s parameters is straightforward.
 
@@ -73,7 +73,7 @@ where $A_{ij}$ is the area of the Voronoi facet between atoms $i$ and
 $j$ and $A$ is the sum of the face areas of atom $i$. In pyscal, the
 area weights are already assigned during the neighbor calculation phase
 when the Voronoi method is used to calculate neighbors in the
-`~pyscal.core.System.find_neighbors`{.interpreted-text role="func"}. The
+[System.find_neighbors](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.find_neighbors). The
 Voronoi weighted Steinhardt\'s parameters can be calculated as follows,
 
 ``` python
