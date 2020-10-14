@@ -69,7 +69,7 @@
 <meta property="og:url"         content="https://pyscal.org/part3/04_disorder_parameters.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Disorder variable" />
-<meta property="og:description" content="Disorder variable  In this example, [disorder variable](random link) which was introduced to measure the disorder of a system is explored. We start by importing" />
+<meta property="og:description" content="Disorder variable  In this example, disorder variable, which was introduced to measure the disorder of a system is explored. We start by importing the necessary" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -348,7 +348,7 @@
                 
   <div class="section" id="disorder-variable">
 <h1>Disorder variable<a class="headerlink" href="#disorder-variable" title="Permalink to this headline">¶</a></h1>
-<p>In this example, [disorder variable](random link) which was introduced to measure the disorder of a system is explored. We start by importing the necessary modules. We will use :mod:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures</span></code> to create the necessary crystal structures.</p>
+<p>In this example, <a class="reference external" href="https://pyscal.org/part3/disorder.html">disorder variable</a>, which was introduced to measure the disorder of a system is explored. We start by importing the necessary modules. We will use <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#module-pyscal.crystal_structures">pyscal.crystal_structures</a> to create the necessary crystal structures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
@@ -367,7 +367,7 @@
 </div>
 </div>
 </div>
-<p>The created atoms and box are assigned to a :class:<code class="docutils literal notranslate"><span class="pre">~pyscal.core.System</span></code> object.</p>
+<p>The created atoms and box are assigned to a <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System">pyscal.core.System</a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
@@ -401,7 +401,7 @@
 </div>
 </div>
 </div>
-<p>The calculated disorder value can be accessed for each atom using the :attr:<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.disorder</span></code> variable.</p>
+<p>The calculated disorder value can be accessed for each atom using the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.disorder">Atom.disorder</a> variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span>
@@ -428,7 +428,7 @@
 </div>
 </div>
 </div>
-<p>As expected, for a perfect fcc structure, we can see that the disorder is zero. The variation of disorder variable on a distorted lattice can be explored now. We will once again use the <code class="docutils literal notranslate"><span class="pre">noise</span></code> keyword along with :func:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures.make_crystal</span></code> to create a distorted lattice.</p>
+<p>As expected, for a perfect fcc structure, we can see that the disorder is zero. The variation of disorder variable on a distorted lattice can be explored now. We will once again use the <code class="docutils literal notranslate"><span class="pre">noise</span></code> keyword along with <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.crystal_structures.make_crystal">pyscal.crystal_structures.make_crystal</a> to create a distorted lattice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms_d1</span><span class="p">,</span> <span class="n">fcc_box_d1</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -574,16 +574,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "base"
+            mode: "lammps"
         },
         kernelOptions: {
-            kernelName: "base",
+            kernelName: "lammps",
             path: "./part3"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'base'</script>
+    <script>kernelName = 'lammps'</script>
 
               </div>
               

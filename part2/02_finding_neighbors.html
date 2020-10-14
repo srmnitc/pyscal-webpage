@@ -389,8 +389,7 @@
                 
   <div class="section" id="calculating-coordination-numbers">
 <h1>Calculating coordination numbers<a class="headerlink" href="#calculating-coordination-numbers" title="Permalink to this headline">¶</a></h1>
-<p>In this example, we will read in a configuration from an MD simulation and then calculate the coordination number distribution.<br />
-This example assumes that you read the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/examples.html#basic-examples">basic example</a>.</p>
+<p>In this example, we will read in a configuration from an MD simulation and then calculate the coordination number distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
@@ -503,7 +502,7 @@ This example assumes that you read the <a class="reference external" href="https
 </div>
 <div class="section" id="adaptive-cutoff-methods">
 <h2>Adaptive cutoff methods<a class="headerlink" href="#adaptive-cutoff-methods" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pyscal</span></code> also has adaptive cutoff methods implemented. These methods remove the restriction on having the same cutoff. A distinct cutoff is selected for each atom during runtime. <code class="docutils literal notranslate"><span class="pre">pyscal</span></code> uses two distinct algorithms to do this - <code class="docutils literal notranslate"><span class="pre">sann</span></code> and <code class="docutils literal notranslate"><span class="pre">adaptive</span></code>. Please check the <a class="reference external" href="https://pyscal.readthedocs.io/en/latest/nearestneighbormethods.html">documentation</a> for a explanation of these algorithms.  For the purpose of this example, we will use the <code class="docutils literal notranslate"><span class="pre">adaptive</span></code> algorithm.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyscal</span></code> also has adaptive cutoff methods implemented. These methods remove the restriction on having the same cutoff. A distinct cutoff is selected for each atom during runtime. <code class="docutils literal notranslate"><span class="pre">pyscal</span></code> uses two distinct algorithms to do this - <code class="docutils literal notranslate"><span class="pre">sann</span></code> and <code class="docutils literal notranslate"><span class="pre">adaptive</span></code>. Please check the <a class="reference external" href="https://pyscal.org/part2/intro.html">documentation</a> for a explanation of these algorithms.  For the purpose of this example, we will use the <code class="docutils literal notranslate"><span class="pre">adaptive</span></code> algorithm.</p>
 <p><code class="docutils literal notranslate"><span class="pre">adaptive</span> <span class="pre">algorithm</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

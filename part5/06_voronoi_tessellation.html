@@ -383,7 +383,7 @@
 </div>
 </div>
 </div>
-<p>The :mod:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures</span></code> module is used to create different perfect crystal structures. The created atoms and simulation box is then assigned to a :class:<code class="docutils literal notranslate"><span class="pre">~pyscal.core.System</span></code> object. For this example, fcc, bcc, hcp and diamond structures are created.</p>
+<p>The <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#module-pyscal.crystal_structures">crystal_structures</a> module is used to create different perfect crystal structures. The created atoms and simulation box is then assigned to a <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System">pyscal.core.System</a> object. For this example, fcc, bcc, hcp and diamond structures are created.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span><span class="p">,</span> <span class="n">fcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -414,7 +414,7 @@
 </div>
 </div>
 </div>
-<p>Before calculating the Voronoi polyhedron, the <a class="reference external" href="http://pyscal.com/en/latest/methods/nearestneighbormethods/nearestneighbormethods.html">neighbors for each atom</a> need to be found using Voronoi method.</p>
+<p>Before calculating the Voronoi polyhedron, the <a class="reference external" href="https://pyscal.org/part2/intro.html">neighbors for each atom</a> need to be found using Voronoi method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;voronoi&#39;</span><span class="p">)</span>
@@ -434,7 +434,7 @@
 </div>
 </div>
 </div>
-<p>The calculated parameters for each atom can be accessed using the :attr:<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.vorovector</span></code> attribute.</p>
+<p>The calculated parameters for each atom can be accessed using the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.vorovector">Atom.vorovector</a> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span>
@@ -482,7 +482,7 @@
 </div>
 <div class="section" id="voronoi-volume">
 <h1>Voronoi volume<a class="headerlink" href="#voronoi-volume" title="Permalink to this headline">¶</a></h1>
-<p>Voronoi volume, which is the volume of the Voronoi polyhedron is calculated when the neighbors are found. The volume can be accessed using the :attr:<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.volume</span></code> attribute.</p>
+<p>Voronoi volume, which is the volume of the Voronoi polyhedron is calculated when the neighbors are found. The volume can be accessed using the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.volume">Atom.volume</a> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span>
@@ -520,16 +520,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "base"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "base",
+            kernelName: "python3",
             path: "./part5"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'base'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

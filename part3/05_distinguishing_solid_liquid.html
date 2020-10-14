@@ -400,7 +400,7 @@
 </div>
 </div>
 </div>
-<p>Once we compute the neighbors, the next step is to find solid atoms. This can be done using <code class="docutils literal notranslate"><span class="pre">System.find_solids</span></code> method. There are few parameters that can be set, which can be found in detail here.</p>
+<p>Once we compute the neighbors, the next step is to find solid atoms. This can be done using <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.find_solids">System.find_solids</a> method. There are few parameters that can be set, which can be found in detail <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.find_solids">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_solids</span><span class="p">(</span><span class="n">bonds</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">avgthreshold</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -423,7 +423,7 @@
 </div>
 </div>
 </div>
-<p>There are 202 solid atoms in the system. In order to visualise in Ovito, we need to first write it out to a trajectory file. This can be done with the help of <code class="docutils literal notranslate"><span class="pre">to_file</span></code> method of System. This method can help to save any attribute of the atom or ant Steinhardt parameter value.</p>
+<p>There are 202 solid atoms in the system. In order to visualise in Ovito, we need to first write it out to a trajectory file. This can be done with the help of <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.to_file">to_file</a> method of System. This method can help to save any attribute of the atom or ant Steinhardt parameter value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;sys.solid.dat&#39;</span><span class="p">,</span> <span class="n">custom</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;solid&#39;</span><span class="p">])</span>
@@ -478,7 +478,7 @@
 </div>
 <div class="section" id="clustering-based-on-a-custom-property">
 <h1>Clustering based on a custom property<a class="headerlink" href="#clustering-based-on-a-custom-property" title="Permalink to this headline">¶</a></h1>
-<p>In pyscal, clustering can be done based on any property. The following example illustrates this. To find the clusters based on a custom property, the <code class="docutils literal notranslate"><span class="pre">System.clusters_atoms</span></code> method has to be used. The simulation box shown above has the centre roughly at (25, 25, 25). For the custom clustering, we will cluster all atoms within a distance of 10 from the the rough centre of the box at (25, 25, 25). Let us define a function that checks the above condition.</p>
+<p>In pyscal, clustering can be done based on any property. The following example illustrates this. To find the clusters based on a custom property, the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System.cluster_atoms">System.clusters_atoms</a> method has to be used. The simulation box shown above has the centre roughly at (25, 25, 25). For the custom clustering, we will cluster all atoms within a distance of 10 from the the rough centre of the box at (25, 25, 25). Let us define a function that checks the above condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_distance</span><span class="p">(</span><span class="n">atom</span><span class="p">):</span>

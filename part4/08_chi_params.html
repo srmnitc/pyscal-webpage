@@ -367,7 +367,7 @@
 </div>
 </div>
 </div>
-<p>The :mod:<code class="docutils literal notranslate"><span class="pre">~pyscal.crystal_structures</span></code> module is used to create different perfect crystal structures. The created atoms and simulation box is then assigned to a :class:<code class="docutils literal notranslate"><span class="pre">~pyscal.core.System</span></code> object. For this example, fcc, bcc, hcp and diamond structures are created.</p>
+<p>The <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#module-pyscal.crystal_structures">pyscal.crystal_structures</a> module is used to create different perfect crystal structures. The created atoms and simulation box is then assigned to a <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System">pyscal.core.System</a> object. For this example, fcc, bcc, hcp and diamond structures are created.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span><span class="p">,</span> <span class="n">fcc_box</span> <span class="o">=</span> <span class="n">pcs</span><span class="o">.</span><span class="n">make_crystal</span><span class="p">(</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">lattice_constant</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -408,7 +408,7 @@
 </div>
 </div>
 </div>
-<p>Before calculating <span class="math notranslate nohighlight">\(\chi\)</span> parameters, the <a class="reference external" href="http://pyscal.com/en/latest/methods/nearestneighbormethods/nearestneighbormethods.html">neighbors for each atom</a> need to be found.</p>
+<p>Before calculating <span class="math notranslate nohighlight">\(\chi\)</span> parameters, the <a class="reference external" href="https://pyscal.org/part2/intro.html">neighbors for each atom</a> need to be found.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">)</span>
@@ -430,7 +430,7 @@
 </div>
 </div>
 </div>
-<p>The calculated parameters for each atom can be accessed using the :attr:<code class="docutils literal notranslate"><span class="pre">~pyscal.catom.Atom.chiparams</span></code> attribute.</p>
+<p>The calculated parameters for each atom can be accessed using the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.chiparams">Atom.chiparams</a> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_atoms</span> <span class="o">=</span> <span class="n">fcc</span><span class="o">.</span><span class="n">atoms</span>
@@ -453,7 +453,7 @@
 </div>
 </div>
 </div>
-<p>The output is an array of length 9 which shows the number of neighbor angles found within specific bins as explained <a class="reference external" href="http://pyscal.com/en/latest/methods/angularmethods/chiparams.html">here</a>. The output for one atom from each structure is shown below.</p>
+<p>The output is an array of length 9 which shows the number of neighbor angles found within specific bins as explained <a class="reference external" href="https://pyscal.org/part4/08_chi_params.htmll">here</a>. The output for one atom from each structure is shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">fcc_atoms</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">chiparams</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fcc&quot;</span><span class="p">)</span>
@@ -485,16 +485,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "base"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "base",
+            kernelName: "python3",
             path: "./part4"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'base'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
