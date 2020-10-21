@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angular parameters &#8212; pyscal</title>
+    <title>Visualizing System objects &#8212; pyscal</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,21 +55,21 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pyscal.org/part4/angular.html" />
+    <link rel="canonical" href="https://pyscal.org/part9/14_visualize_system.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Angular parameter" href="07_angular_parameters.html" />
-    <link rel="prev" title="Distinction of solid liquid atoms and clustering" href="../part3/05_distinguishing_solid_liquid.html" />
+    <link rel="next" title="API reference" href="../prologue/api.html" />
+    <link rel="prev" title="Cowley short range order parameter" href="../part8/10_short_range_order.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://pyscal.org/part4/angular.html" />
+<meta property="og:url"         content="https://pyscal.org/part9/14_visualize_system.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Angular parameters" />
-<meta property="og:description" content="Angular parameters  Angular criteria for identification of diamond structure  Angular parameter introduced by Uttormark et al [1] is used to measure the tetrahe" />
+<meta property="og:title"       content="Visualizing System objects" />
+<meta property="og:description" content="Visualizing System objects  In this notebook, experimental plotting methods of pyscal is illustrated. The plotting functionality works only through jupyter note" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -168,25 +168,10 @@
    Classification of atoms as solid or liquid
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../part4/angular.html">
    Angular parameters
   </a>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07_angular_parameters.html">
-     Angular parameter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08_chi_params.html">
-     <span class="math notranslate nohighlight">
-      \(\chi\)
-     </span>
-     parameters
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../part5/voronoiparameters.html">
@@ -208,8 +193,8 @@
    Cowley short range order parameter
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../part9/14_visualize_system.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Visualizing System objects
   </a>
  </li>
@@ -294,9 +279,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/part4/angular.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/part9/14_visualize_system.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -314,7 +299,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart4/angular.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/srmnitc/pyscal-webpage/issues/new?title=Issue%20on%20page%20%2Fpart9/14_visualize_system.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -330,6 +315,23 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/srmnitc/pyscal-webpage/main?urlpath=lab/tree/pyscal/part9/14_visualize_system.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -341,21 +343,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#angular-criteria-for-identification-of-diamond-structure">
-   Angular criteria for identification of diamond structure
+  <a class="reference internal nav-link" href="#for-jupyter-notebooks">
+   For Jupyter Notebooks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#chi-parameters-for-structural-identification">
-   <span class="math notranslate nohighlight">
-    \(\chi\)
-   </span>
-   parameters for structural identification
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+  <a class="reference internal nav-link" href="#for-jupyter-lab">
+   For Jupyter Lab
   </a>
  </li>
 </ul>
@@ -369,72 +363,112 @@
         
               <div>
                 
-  <div class="section" id="angular-parameters">
-<h1>Angular parameters<a class="headerlink" href="#angular-parameters" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="angular-criteria-for-identification-of-diamond-structure">
-<h2>Angular criteria for identification of diamond structure<a class="headerlink" href="#angular-criteria-for-identification-of-diamond-structure" title="Permalink to this headline">¶</a></h2>
-<p>Angular parameter introduced by Uttormark et al <a class="bibtex reference internal" href="#uttormark1993" id="id1">[1]</a> is used to measure
-the tetrahedrality of local atomic structure. An atom belonging to
-diamond structure has four nearest neighbors which gives rise to six
-three body angles around the atom. The angular parameter <span class="math notranslate nohighlight">\(A\)</span> is then
-defined as,</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[ A = \sum_{i=1}^6 (\cos(\theta_i)+\frac{1}{3})^2\]</div>
-</div></blockquote>
-<p>An atom belonging to diamond structure would show the value of angular
-params close to 0. Angular parameter can be calculated in pyscal using
-the following method -</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
-<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_angularcriteria</span><span class="p">()</span>
+  <div class="section" id="visualizing-system-objects">
+<h1>Visualizing System objects<a class="headerlink" href="#visualizing-system-objects" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, experimental plotting methods of <code class="docutils literal notranslate"><span class="pre">pyscal</span></code> is illustrated. The plotting functionality works only through jupyter notebooks or jupyter lab. It depends on ipywidgets and plotly to render the output. There is some extra configuration that needs to be done which is mentioned below:</p>
+<div class="section" id="for-jupyter-notebooks">
+<h2>For Jupyter Notebooks<a class="headerlink" href="#for-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;notebook&gt;=5.3&quot;</span> <span class="s2">&quot;ipywidgets&gt;=7.2&quot;</span>
 </pre></div>
 </div>
-<p>The calculated angular criteria value can be accessed for each atom
-using <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.angular">Atom.angular</a>.</p>
-</div>
-<div class="section" id="chi-parameters-for-structural-identification">
-<h2><span class="math notranslate nohighlight">\(\chi\)</span> parameters for structural identification<a class="headerlink" href="#chi-parameters-for-structural-identification" title="Permalink to this headline">¶</a></h2>
-<p><span class="math notranslate nohighlight">\(\chi\)</span> parameters introduced by Ackland and Jones <a class="bibtex reference internal" href="#ackland2006" id="id2">[2]</a> measures all local
-angles created by an atom with its neighbors and creates a histogram of
-these angles to produce vector which can be used to identify structures.
-After finding the neighbors of an atom, <span class="math notranslate nohighlight">\(\cos \theta_{ijk}\)</span> for atoms j
-and k which are neighbors of i is calculated for all combinations of i,
-j and k. The set of all calculated cosine values are then added to a
-histogram with the following bins - [-1.0, -0.945, -0.915, -0.755,
--0.705, -0.195, 0.195, 0.245, 0.795, 1.0]. Compared to <span class="math notranslate nohighlight">\(\chi\)</span>
-parameters from <span class="math notranslate nohighlight">\(\chi_0\)</span> to <span class="math notranslate nohighlight">\(\chi_7\)</span> in the associated publication, the
-vector calculated in pyscal contains values from <span class="math notranslate nohighlight">\(\chi_0\)</span> to <span class="math notranslate nohighlight">\(\chi_8\)</span>
-which is due to an additional <span class="math notranslate nohighlight">\(\chi\)</span> parameter which measures the number
-of neighbors between cosines -0.705 to -0.195. The <span class="math notranslate nohighlight">\(\chi\)</span> vector is
-characteristic of the local atomic environment and can be used to
-identify crystal structures, details of which can be found in the
-publication[^2].</p>
-<p><span class="math notranslate nohighlight">\(\chi\)</span> parameters can be calculated in pyscal using,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
-<span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s1">&#39;conf.dump&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cutoff&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">calculate_chiparams</span><span class="p">()</span>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="s2">&quot;notebook&gt;=5.3&quot;</span> <span class="s2">&quot;ipywidgets&gt;=7.2&quot;</span>
 </pre></div>
 </div>
-<p>The calculated values for each atom can be accessed using
-<a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.chiparams">Atom.chiparams</a>.</p>
 </div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-part4/angular-0"><dl class="citation">
-<dt class="bibtex label" id="uttormark1993"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Michael J. Uttormark, Michael O. Thompson, and Paulette Clancy. Kinetics of crystal dissolution for a stillinger-weber model of silicon. <em>Phys. Rev. B</em>, 47:15717–15726, Jun 1993. URL: <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevB.47.15717">https://link.aps.org/doi/10.1103/PhysRevB.47.15717</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevB.47.15717">doi:10.1103/PhysRevB.47.15717</a>.</p>
-</dd>
-<dt class="bibtex label" id="ackland2006"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>G. J. Ackland and A. P. Jones. Applications of local crystal structure measures in experiment and simulation. <em>Physical Review B - Condensed Matter and Materials Physics</em>, 73(5):1–7, 2006. ISBN: 1098-0121. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.73.054104">doi:10.1103/PhysRevB.73.054104</a>.</p>
-</dd>
-</dl>
-</p>
-<div class="toctree-wrapper compound">
+<div class="section" id="for-jupyter-lab">
+<h2>For Jupyter Lab<a class="headerlink" href="#for-jupyter-lab" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterlab</span> <span class="s2">&quot;ipywidgets&gt;=7.5&quot;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">jupyterlab</span> <span class="s2">&quot;ipywidgets=7.5&quot;</span>
+</pre></div>
+</div>
+<p>followed by,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">labextension</span> <span class="n">install</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">plotly</span><span class="o">@</span><span class="mf">4.11</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">jupyter</span> <span class="n">labextension</span> <span class="n">install</span> <span class="nd">@jupyter</span><span class="o">-</span><span class="n">widgets</span><span class="o">/</span><span class="n">jupyterlab</span><span class="o">-</span><span class="n">manager</span> <span class="n">plotlywidget</span><span class="o">@</span><span class="mf">4.11</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>We start by importing the necessary modules</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can set up a system and read in a file to be visualized</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="s2">&quot;../tests/conf8k.dump&quot;</span><span class="p">,</span> <span class="n">customkeys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vx&quot;</span><span class="p">,</span> <span class="s2">&quot;vy&quot;</span><span class="p">,</span> <span class="s2">&quot;vz&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will further calculate some q values and also the solid particles in the system which will be used later for visualization</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;cutoff&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">averaged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">find_solids</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>448
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to visualize the system, the <code class="docutils literal notranslate"><span class="pre">show</span></code> method can be used. This method renders a widget which a slider for the radius of atoms and a text box for entering the colormap to be used for coloring atoms. A list of colormaps can be <a class="reference external" href="https://plotly.com/python/builtin-colorscales/">found here</a>. The widget also has a <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">plot</span></code> button which will generate the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "63b554da5c8b42b1a057e7fc1243e564", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>This is just a general rendering of the system. Further customization can be done. For example, we can color the atoms using the averaged q6 values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">colorby</span><span class="o">=</span><span class="s2">&quot;aq6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "02ad1bda829646289163306048d469d1", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We can also select which atoms are to be plotted. For example we can refine the figure to only plot the atoms that are identified as solid in the <code class="docutils literal notranslate"><span class="pre">find_solids</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">colorby</span><span class="o">=</span><span class="s2">&quot;aq6&quot;</span><span class="p">,</span> <span class="n">filterby</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ce89c578abff48628a990052ff0a6765", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Any atom property can used to color the map. These include any <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom">Atom attribute</a>, calculated q values which can be accessed by <code class="docutils literal notranslate"><span class="pre">qx</span></code> or <code class="docutils literal notranslate"><span class="pre">aqx</span></code>, for traditional and averaged Steinhardts parameters respectively. <code class="docutils literal notranslate"><span class="pre">x</span></code> stands for the number of q. It can also be attributes that are stored in the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.custom">Atom.custom</a> variable. In the above code bit, when the file was read in, the custom variable was used to read in the velocities for each atom. We will color atoms using the velocity in x direction, that is <code class="docutils literal notranslate"><span class="pre">vx</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">colorby</span><span class="o">=</span><span class="s2">&quot;vx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "e5b454a19a33413081f3adf20b7324b9", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 </div>
 </div>
@@ -448,16 +482,16 @@ publication[^2].</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "lammps"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./part4"
+            kernelName: "lammps",
+            path: "./part9"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'lammps'</script>
 
               </div>
               
@@ -467,8 +501,8 @@ publication[^2].</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../part3/05_distinguishing_solid_liquid.html" title="previous page">Distinction of solid liquid atoms and clustering</a>
-    <a class='right-next' id="next-link" href="07_angular_parameters.html" title="next page">Angular parameter</a>
+    <a class='left-prev' id="prev-link" href="../part8/10_short_range_order.html" title="previous page">Cowley short range order parameter</a>
+    <a class='right-next' id="next-link" href="../prologue/api.html" title="next page">API reference</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
