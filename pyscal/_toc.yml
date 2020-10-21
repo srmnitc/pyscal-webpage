@@ -45,6 +45,7 @@
     - file: part7/12_calculating_energy.ipynb
     - file: part7/13_combining_energy_enthalpy.ipynb
   - file: part8/10_short_range_order.ipynb
+  - file: part9/14_visualize_system.ipynb
 
 - part: API reference
   chapters:
