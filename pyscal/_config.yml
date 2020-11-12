@@ -31,7 +31,7 @@ launch_buttons:
   binderhub_url             : https://mybinder.org
 
 execute:
-  execute_notebooks         : off  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  execute_notebooks         : cache  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
 
 latex:
   latex_engine              : pdflatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
