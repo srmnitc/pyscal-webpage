@@ -5,19 +5,19 @@
 -   [Sarath
     Menon](http://sarathmenon.me)
 -   [Grisell Díaz
-    Leines](http://www.icams.de/content/people/icams-staff-members/?detail=1124)
+    Leines](https://www.ch.cam.ac.uk/person/gd466)
 -   [Jutta
-    Rogal](http://www.icams.de/content/people/icams-staff-members/?detail=129)
+    Rogal](https://www.physik.fu-berlin.de/en/einrichtungen/ag/ag-rogal/index.html)
 
 ## Contributers
 
--   [Jan Janßen](https://www.mpie.de/person/42524) - developing and
+-   [Jan Janßen](https://jan-janssen.com/) - developing and
     maintaining a [conda-forge](https://conda-forge.org/) recipe.
 
 ## Acknowledgements
 
 We acknowledge [Bond order
-analysis](https://homepage.univie.ac.at/wolfgang.lechner/) code for the
+analysis](https://github.com/WolfgangLechner/StructureAnalysis) code for the
 inspiration and the base for what later grew to be `pyscal`. We are also
 thankful to the developers of [Voro++](math.lbl.gov/voro++/) and
 [pybind11](https://pybind11.readthedocs.io/en/stable/) for developing
