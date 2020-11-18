@@ -23,7 +23,7 @@ sys.calculate_angularcriteria()
 ```
 
 The calculated angular criteria value can be accessed for each atom
-using `~pyscal.catom.Atom.angular`{.interpreted-text role="attr"}.
+using [Atom.angular](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.angular).
 
 ## $\chi$ parameters for structural identification
 
@@ -54,7 +54,7 @@ sys.calculate_chiparams()
 ```
 
 The calculated values for each atom can be accessed using
-`~pyscal.catom.Atom.chiparams`{.interpreted-text role="attr"}.
+[Atom.chiparams](https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom.chiparams).
 
 ## References
 

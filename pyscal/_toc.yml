@@ -1,23 +1,16 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-  numbered: true
+  numbered: false
 
-- part: Installation
+- part: Trying and installing
   chapters:
   - file: prologue/gettingstarted.md
-
-- part: Downloads
-  chapters:
   - file: prologue/download.md
 
-- part: Support, contributing and extending
+- part: News
   chapters:
-  - file: prologue/extending.md
-
-- part: Citing the code
-  chapters:
-  - file: prologue/citing.md
+  - file: prologue/news.md
 
 - part: Examples
   chapters:
@@ -52,19 +45,16 @@
     - file: part7/12_calculating_energy.ipynb
     - file: part7/13_combining_energy_enthalpy.ipynb
   - file: part8/10_short_range_order.ipynb
+  - file: part9/14_visualize_system.ipynb
+  - file: part9/15_trajectory_module.ipynb
 
 - part: API reference
   chapters:
   - file: prologue/api.md
 
-- part: News
+- part: Support, contributing and extending
   chapters:
-  - file: prologue/news.md
-
-- part: Credits
-  chapters:
+  - file: prologue/extending.md
+  - file: prologue/citing.md
   - file: prologue/acknowledgements.md
-
-- part: License
-  chapters:
   - file: prologue/license.md
