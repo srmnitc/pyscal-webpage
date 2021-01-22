@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analyzing a lammps trajectory &#8212; pyscal</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -34,13 +34,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@
 <meta property="og:url"         content="https://pyscal.org/part3/03_01_steinhardts_parameters_for_lammps.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Analyzing a lammps trajectory" />
-<meta property="og:description" content="Analyzing a lammps trajectory  In this example, a lammps trajectory in dump-text format will be read in, and Steinhardt’s parameters will be calculated.  import" />
+<meta property="og:description" content="Analyzing a lammps trajectory  In this example, a lammps trajectory in dump-text format will be read in, and Steinhardt’s parameters will be calculated.  Earlie" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -476,57 +475,39 @@
   <div class="section" id="analyzing-a-lammps-trajectory">
 <h1>Analyzing a lammps trajectory<a class="headerlink" href="#analyzing-a-lammps-trajectory" title="Permalink to this headline">¶</a></h1>
 <p>In this example, a lammps trajectory in dump-text format will be read in, and Steinhardt’s parameters will be calculated.</p>
+<blockquote>
+<div><p>Earlier versions of this tutorial used <code class="docutils literal notranslate"><span class="pre">traj_process</span></code> module. It is now updated to work with the more efficient <code class="docutils literal notranslate"><span class="pre">trajectory</span></code> module.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyscal.core</span> <span class="k">as</span> <span class="nn">pc</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pyscal.traj_process</span> <span class="k">as</span> <span class="nn">ptp</span>
+<span class="kn">from</span> <span class="nn">pyscal.trajectory</span> <span class="kn">import</span> <span class="n">Trajectory</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>First, we will use the <code class="docutils literal notranslate"><span class="pre">split_trajectory</span></code> method from <code class="docutils literal notranslate"><span class="pre">pyscal.traj_process</span></code> module to help split the trajectory into individual snapshots.</p>
+<p>First, we will use the <code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> class to load the trajectory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trajfile</span> <span class="o">=</span> <span class="s2">&quot;traj.light&quot;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">ptp</span><span class="o">.</span><span class="n">split_trajectory</span><span class="p">(</span><span class="n">trajfile</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">files</span></code> contain the individual time slices from the trajectory.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traj</span> <span class="o">=</span> <span class="n">Trajectory</span><span class="p">(</span><span class="s2">&quot;traj.light&quot;</span><span class="p">)</span>
+<span class="n">traj</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trajectory of 10 slices with 500 atoms
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now we can make a small function which reads slice and calculates <span class="math notranslate nohighlight">\(q_6\)</span> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;traj.light.snap.0.dat&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can make a small function which reads a single configuration and calculates <span class="math notranslate nohighlight">\(q_6\)</span> values.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_q6</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lammps-dump&quot;</span><span class="p">):</span>
-    <span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_q6</span><span class="p">(</span><span class="n">timeslice</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lammps-dump&quot;</span><span class="p">):</span>
+    <span class="n">sys</span> <span class="o">=</span> <span class="n">timeslice</span><span class="o">.</span><span class="n">to_system</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;cutoff&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
     <span class="n">q6</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">get_qvals</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
@@ -538,7 +519,7 @@
 <p>There are a couple of things of interest in the above function. The <code class="docutils literal notranslate"><span class="pre">find_neighbors</span></code> method finds the neighbors of the individual atoms. Here, an adaptive method is used, but, one can also use a fixed cutoff or Voronoi tessellation. Also only the unaveraged <span class="math notranslate nohighlight">\(q_6\)</span> values are calculated above. The averaged ones can be calculate using the <code class="docutils literal notranslate"><span class="pre">averaged=True</span></code> keyword in both <code class="docutils literal notranslate"><span class="pre">calculate_q</span></code> and <code class="docutils literal notranslate"><span class="pre">get_qvals</span></code> method. Now we can simply call the function for each file..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q6s</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_q6</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q6s</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_q6</span><span class="p">(</span><span class="n">traj</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">nblocks</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -551,10 +532,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbd87929b20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f230fdeab80&gt;]
 </pre></div>
 </div>
-<img alt="../_images/03_01_steinhardts_parameters_for_lammps_12_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_12_1.png" />
+<img alt="../_images/03_01_steinhardts_parameters_for_lammps_9_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_9_1.png" />
 </div>
 </div>
 <div class="section" id="adding-a-clustering-condition">
@@ -562,8 +543,7 @@
 <p>We will now modify the above function to also find clusters which satisfy particular <span class="math notranslate nohighlight">\(q_6\)</span> value. But first, for a single file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span> <span class="o">=</span> <span class="n">traj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_system</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;cutoff&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
@@ -629,15 +609,14 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Cluster ID&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03_01_steinhardts_parameters_for_lammps_27_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_27_1.png" />
+<img alt="../_images/03_01_steinhardts_parameters_for_lammps_24_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_24_1.png" />
 </div>
 </div>
 <p>Now we can finally put all of these together into a single function and run it over our individual time slices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_q6_cluster</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">cutoff_q6</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lammps-dump&quot;</span><span class="p">):</span>
-    <span class="n">sys</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">System</span><span class="p">()</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">read_inputfile</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_q6_cluster</span><span class="p">(</span><span class="n">timeslice</span><span class="p">,</span> <span class="n">cutoff_q6</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lammps-dump&quot;</span><span class="p">):</span>
+    <span class="n">sys</span> <span class="o">=</span> <span class="n">timeslice</span><span class="o">.</span><span class="n">to_system</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;cutoff&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">calculate_q</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_condition</span><span class="p">(</span><span class="n">atom</span><span class="p">):</span>
@@ -653,7 +632,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q6clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_q6_cluster</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q6clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_q6_cluster</span><span class="p">(</span><span class="n">traj</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">nblocks</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -671,7 +650,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;number of unique clusters&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03_01_steinhardts_parameters_for_lammps_32_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_32_1.png" />
+<img alt="../_images/03_01_steinhardts_parameters_for_lammps_29_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_29_1.png" />
 </div>
 </div>
 <p>We can also plot the biggest cluster size</p>
@@ -687,16 +666,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Largest cluster size&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03_01_steinhardts_parameters_for_lammps_34_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_34_1.png" />
-</div>
-</div>
-<p>The final thing to do is to remove the split files after use.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/03_01_steinhardts_parameters_for_lammps_31_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_31_1.png" />
 </div>
 </div>
 </div>
@@ -751,7 +721,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Largest cluster size&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03_01_steinhardts_parameters_for_lammps_46_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_46_1.png" />
+<img alt="../_images/03_01_steinhardts_parameters_for_lammps_41_1.png" src="../_images/03_01_steinhardts_parameters_for_lammps_41_1.png" />
 </div>
 </div>
 <p>As expected, the results are identical for both calculations!</p>
@@ -807,7 +777,7 @@
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

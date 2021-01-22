@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pyscal Trajectory &#8212; pyscal</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -34,13 +34,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -457,11 +456,10 @@
   <div class="section" id="pyscal-trajectory">
 <h1>pyscal <code class="docutils literal notranslate"><span class="pre">Trajectory</span></code><a class="headerlink" href="#pyscal-trajectory" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> is a <code class="docutils literal notranslate"><span class="pre">pyscal</span></code> module intended for working with molecular dynamics trajectories which contain more than one time slice. Currently, the module only supports <a class="reference external" href="https://lammps.sandia.gov/doc/dump.html">LAMMPS dump</a> text file formats. It can be used to get a single or slices from a trajectory, trim the trajectory or even combine multiple trajectories. The example below illustrates various uses of the module.</p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> is an experimental feature at the moment and may undergo significant changes in future releases</strong></p>
 <p>Start with importing the module</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyscal</span> <span class="kn">import</span> <span class="n">Trajectory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyscal.trajectory</span> <span class="kn">import</span> <span class="n">Trajectory</span>
 </pre></div>
 </div>
 </div>
@@ -487,7 +485,33 @@
 </div>
 </div>
 </div>
-<p>We can know the number of slices in the trajectory and the number of atoms. <code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> only works with fixed number of atoms.</p>
+<p>You can also access some basic properties of the trajectories</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traj</span><span class="o">.</span><span class="n">nblocks</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">traj.nblocks</span></code> gives the number of time slices in the trajectory. <code class="docutils literal notranslate"><span class="pre">natoms</span></code> gives the number of atoms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traj</span><span class="o">.</span><span class="n">natoms</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> only works with fixed number of atoms.</p>
 <p>Now, one can get a single slice or multiple slices just as is done with a python list. Getting the 2nd slice (counting starts from 0!).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -504,7 +528,8 @@
 </div>
 </div>
 </div>
-<p>This slice can now be converted to a more usable format, either to a pyscal <code class="docutils literal notranslate"><span class="pre">System</span></code> or just written to another text file. Convert to a pyscal <code class="docutils literal notranslate"><span class="pre">System</span></code> object,</p>
+<p>This slice can now be converted to a number of usable formats:<br />
+Convert to a pyscal <code class="docutils literal notranslate"><span class="pre">System</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">to_system</span><span class="p">()</span>
@@ -513,7 +538,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pyscal.core.System at 0x7f81f93971d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pyscal.core.System at 0x7f23e687b6d0&gt;]
 </pre></div>
 </div>
 </div>
@@ -552,7 +577,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pyscal.core.System at 0x7f81f9397530&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pyscal.core.System at 0x7f23e687bbd0&gt;]
 </pre></div>
 </div>
 </div>
@@ -569,10 +594,67 @@
 </div>
 </div>
 </div>
+<p>Convert to an ASE atoms object,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aseobj</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">to_ase</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Au&quot;</span><span class="p">])</span>
+<span class="n">aseobj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Atoms(symbols=&#39;Au500&#39;, pbc=True, cell=[18.22887, 18.234740000000002, 18.37877])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>It can also be converted to a python dictionary with easily accessible quantities,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adict</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="n">adict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;box&#39;, &#39;atoms&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The atom properties can also be accessed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;atoms&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4.9941
+</pre></div>
+</div>
+</div>
+</div>
 <p>Instead of creating a System object, the slice can also be written to a file directly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sl</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;test.dump&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or can be saved also in a HDF format</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sl</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s2">&quot;test.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If one needs to call any of the above methods on the complete trajectory, you can use the <code class="docutils literal notranslate"><span class="pre">:</span></code> index. For example,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complete_dict</span> <span class="o">=</span> <span class="n">traj</span><span class="p">[:]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -637,16 +719,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "lammps"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "lammps",
+            kernelName: "python3",
             path: "./part9"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'lammps'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -677,7 +759,7 @@
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

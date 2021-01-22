@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getting started with pyscal &#8212; pyscal</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -34,13 +34,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@
 <meta property="og:url"         content="https://pyscal.org/part1/01_getting_started.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Getting started with pyscal" />
-<meta property="og:description" content="Getting started with pyscal  This example illustrates basic functionality of pyscal python library by setting up a system and the atoms.  import pyscal.core as " />
+<meta property="og:description" content="Getting started with pyscal  pyscal has three levels of objects. The fundamental one is Atom object which is used to store all properties that belong to an atom" />
 <meta property="og:image"       content="https://pyscal.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -508,6 +507,7 @@
                 
   <div class="section" id="getting-started-with-pyscal">
 <h1>Getting started with pyscal<a class="headerlink" href="#getting-started-with-pyscal" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pyscal</span></code> has three levels of objects. The fundamental one is <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.catom.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a> object which is used to store all properties that belong to an atom. The next object is <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.core.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a>. <code class="docutils literal notranslate"><span class="pre">System</span></code> consists of multiple <code class="docutils literal notranslate"><span class="pre">Atom</span></code> objects and the simulation box. The final object is the <a class="reference external" href="https://docs.pyscal.org/en/latest/pyscal.html#pyscal.trajectory.Timeslice"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code></a> which stores a complete trajectory. In this example, we will look at <code class="docutils literal notranslate"><span class="pre">Atom</span></code> and <code class="docutils literal notranslate"><span class="pre">System</span></code>.</p>
 <p>This example illustrates basic functionality of pyscal python library by setting up a system and the atoms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,16 +732,16 @@ accessed as before.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "lammps"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "lammps",
+            kernelName: "python3",
             path: "./part1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'lammps'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -772,7 +772,7 @@ accessed as before.</p>
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
